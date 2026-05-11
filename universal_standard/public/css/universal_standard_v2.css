@@ -11,6 +11,8 @@
 	src: url("/assets/universal_standard/fonts/Cairo-Regular-Saudi.ttf") format("truetype"),
 		url("https://cdn.jsdelivr.net/gh/UsmanSanawar/Cairo-with-Saudi-Currency@main/Cairo-Regular-Saudi.ttf") format("truetype");
 	unicode-range: U+00A7;
+	font-style: normal;
+	font-weight: 400;
 	font-display: swap;
 }
 
@@ -29,9 +31,47 @@
 .number-widget-box .number,
 .query-report,
 .report-wrapper,
+.report-view,
+.report-container,
+.report-table,
+.report-summary,
+.report-summary *,
 .datatable,
+.datatable *,
+.dt-scrollable,
+.dt-scrollable *,
+.dt-row,
+.dt-row *,
 .dt-cell,
 .dt-cell__content,
+.dt-cell__content *,
+.dt-cell__content--col,
+.dt-cell__edit,
+.dt-cell__resize-handle,
+.dt-instance,
+.dt-instance *,
+.dt-header,
+.dt-header *,
+.dt-body,
+.dt-body *,
+.dt-row-header,
+.dt-row-header *,
+.list-row,
+.list-row *,
+.list-row-container,
+.list-row-container *,
+.frappe-list,
+.frappe-list *,
+.result,
+.result *,
+.form-grid,
+.form-grid *,
+.grid-row,
+.grid-row *,
+.grid-body,
+.grid-body *,
+.grid-static-col,
+.grid-static-col *,
 .grid-static-col[data-fieldtype="Currency"] {
 	font-family: "US Saudi Riyal", "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif !important;
 }

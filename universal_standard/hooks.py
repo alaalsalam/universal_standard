@@ -5,7 +5,7 @@ app_description = "General shared UX improvements for all Frappe systems"
 app_email = "alaalsalam101@gmail.com"
 app_license = "mit"
 
-ASSET_VERSION = "20260429_1"
+ASSET_VERSION = "20260511_1"
 
 
 def _v(path: str) -> str:
