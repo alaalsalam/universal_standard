@@ -5,7 +5,7 @@ app_description = "General shared UX improvements for all Frappe systems"
 app_email = "alaalsalam101@gmail.com"
 app_license = "mit"
 
-ASSET_VERSION = "20260511_1"
+ASSET_VERSION = "20260511_2"
 
 
 def _v(path: str) -> str:
@@ -36,7 +36,8 @@ app_include_icons = [
 	"universal_standard/icons/my_custom_icons.svg",
 ]
 
-after_install = "universal_standard.pdf.install.after_install"
+after_install = "universal_standard.setup.after_install"
+after_migrate = "universal_standard.setup.after_migrate"
 before_uninstall = "universal_standard.pdf.install.before_uninstall"
 
 override_whitelisted_methods = {

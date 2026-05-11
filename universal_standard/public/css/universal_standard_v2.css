@@ -78,13 +78,59 @@
 
 :root,
 [data-theme="light"] {
-	--font-stack: "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
-	--font-family-sans-serif: "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
+	--font-stack: "US Saudi Riyal", "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
+	--font-family-sans-serif: "US Saudi Riyal", "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
 	--us-accent: #15803d;
 	--us-accent-soft: #dcfce7;
 	--us-border-soft: #d9f3df;
 	--us-surface-tint: #f6fcf7;
 	--us-glow: rgba(21, 128, 61, 0.18);
+}
+
+html,
+body,
+.app,
+.desk,
+.page-container,
+.page-content,
+.layout-main,
+.layout-main-section,
+.layout-side-section,
+.modal,
+.modal *,
+.popover,
+.popover *,
+.dropdown-menu,
+.dropdown-menu *,
+.standard-sidebar,
+.standard-sidebar *,
+.workspace-page,
+.workspace-page *,
+.form-layout,
+.form-layout *,
+.form-section,
+.form-section *,
+.form-dashboard,
+.form-dashboard *,
+.frappe-control,
+.frappe-control *,
+.control-input,
+.control-input *,
+.control-value,
+.control-value *,
+.comment-box,
+.comment-box *,
+.timeline,
+.timeline *,
+.list-paging-area,
+.list-paging-area *,
+.page-form,
+.page-form *,
+.print-preview,
+.print-preview *,
+.web-form,
+.web-form * {
+	font-family: var(--font-family-sans-serif) !important;
 }
 
 body,
