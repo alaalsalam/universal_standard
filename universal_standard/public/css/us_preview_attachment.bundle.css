@@ -1,0 +1,28 @@
+/* ../../../../../tmp/tmp-928401-CiiWZYrgraIi/preview_attachment/preview_attachment/public/scss/preview_attachment.bundle.css */
+.json-preview-content {
+  background: #2d2d2d;
+  color: #f8f8f2;
+  border-radius: 5px;
+  padding: 15px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  overflow: auto;
+  max-height: 600px;
+  line-height: 1.5;
+}
+.json-preview-content span.key {
+  color: #66d9ef;
+}
+.json-preview-content span.string {
+  color: #a6e22e;
+}
+.json-preview-content span.number {
+  color: #ae81ff;
+}
+.json-preview-content span.boolean {
+  color: #f92672;
+}
+.json-preview-content span.null {
+  color: #75715e;
+}
+/*# sourceMappingURL=preview_attachment.bundle.HZPLPCFW.css.map */

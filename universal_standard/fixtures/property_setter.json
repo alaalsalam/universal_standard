@@ -1,0 +1,18 @@
+[
+ {
+  "default_value": "Dark-blue",
+  "doc_type": "User",
+  "docstatus": 0,
+  "doctype": "Property Setter",
+  "doctype_or_field": "DocField",
+  "field_name": "desk_theme",
+  "is_system_generated": 0,
+  "modified": "2023-09-11 09:31:53.851513",
+  "module": null,
+  "name": "User-desk_theme-options",
+  "property": "options",
+  "property_type": "Text",
+  "row_name": null,
+  "value": "Dark-blue\nLight\nDark\nAutomatic\nPurple\nGreen\nBlue"
+ }
+]
