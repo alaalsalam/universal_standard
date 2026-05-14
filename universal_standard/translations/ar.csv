@@ -10347,3 +10347,13 @@ Loan Management,إدارة القروض والسلف
 CEO Executive View,???? ?????? ????????
 Selling POS Entry,???? ???? ?????
 Open ERPNext POS,??? ???? ????? ERPNext
+Impersonate,انتحال المستخدم
+You will switch your current session to this user. Continue?,سيتم تحويل جلستك الحالية إلى هذا المستخدم. هل تريد المتابعة؟
+Switching user...,جاري تبديل المستخدم...
+Impersonation failed,فشل انتحال المستخدم
+Login required,تسجيل الدخول مطلوب
+User not found,المستخدم غير موجود
+You cannot impersonate yourself,لا يمكنك انتحال نفسك
+Only Administrator or System Manager can impersonate users,فقط المدير أو مدير النظام يمكنه انتحال المستخدمين
+System Manager and Administrator accounts cannot be impersonated,لا يمكن انتحال حسابات المدير أو مدير النظام
+Impersonated {0},تم انتحال المستخدم {0}

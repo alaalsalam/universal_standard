@@ -27,6 +27,10 @@ app_include_js = [
 	_v("/assets/universal_standard/js/us_preview_attachment_patch.js"),
 ]
 
+doctype_js = {
+	"User": "public/js/us_user_impersonation.js",
+}
+
 web_include_css = [
 	_v("/assets/universal_standard/css/universal_standard_v2.css"),
 	_v("/assets/universal_standard/css/css-rtl/us_translations_ar_eg.css"),

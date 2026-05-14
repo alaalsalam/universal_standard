@@ -149,3 +149,50 @@ def get_sidebar_menu():
         result.append({"category": "Custom Menu", "items": categorized["Custom Menu"]})
 
     return result
+
+
+
+def _can_impersonate(target_user: str) -> tuple[bool, str]:
+    if frappe.session.user == "Guest":
+        return False, "Login required"
+
+    if not target_user or not frappe.db.exists("User", target_user):
+        return False, "User not found"
+
+    if frappe.session.user == target_user:
+        return False, "You cannot impersonate yourself"
+
+    current_roles = set(frappe.get_roles(frappe.session.user))
+    if frappe.session.user != "Administrator" and "System Manager" not in current_roles:
+        return False, "Only Administrator or System Manager can impersonate users"
+
+    target_roles = set(frappe.get_roles(target_user))
+    if target_user == "Administrator" or "System Manager" in target_roles:
+        return False, "System Manager and Administrator accounts cannot be impersonated"
+
+    return True, ""
+
+
+@frappe.whitelist()
+def can_impersonate_user(user: str):
+    allowed, reason = _can_impersonate(user)
+    return {"allowed": allowed, "reason": frappe._(reason) if reason else ""}
+
+
+@frappe.whitelist()
+def impersonate_user(user: str):
+    from frappe.sessions import clear
+    from frappe.core.doctype.activity_log.activity_log import add_authentication_log
+    from frappe.utils import get_fullname
+
+    allowed, reason = _can_impersonate(user)
+    if not allowed:
+        return {"status": "Fail", "message": frappe._(reason)}
+
+    actor = frappe.session.user
+    actor_name = get_fullname(actor)
+    clear()
+    add_authentication_log(f"{actor_name} impersonates {user}", actor)
+    frappe.local.login_manager.login_as(user)
+    add_authentication_log(f"{user} logged in", user)
+    return {"status": "Success", "message": frappe._("Impersonated {0}").format(user)}
