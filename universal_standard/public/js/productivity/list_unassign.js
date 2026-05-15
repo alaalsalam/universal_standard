@@ -21,6 +21,15 @@
     }
     mod.init = function () {
         addAction();
-        $(document).on("page-change toolbar_setup", () => setTimeout(addAction, 300));
+        if (!mod.bound) {
+            mod.bound = true;
+            $(document).on("page-change.us_list_unassign toolbar_setup.us_list_unassign", () => setTimeout(addAction, 300));
+        }
+    };
+    mod.destroy = function () {
+        if (mod.bound) {
+            $(document).off(".us_list_unassign");
+            mod.bound = false;
+        }
     };
 })();

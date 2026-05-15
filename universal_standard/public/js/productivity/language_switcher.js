@@ -17,5 +17,18 @@
         const target = document.querySelector(".navbar .navbar-collapse, .page-head .page-actions, .navbar");
         if (target && !btn.parentElement) target.prepend(btn);
     }
-    mod.init = function () { ensure(); $(document).on("toolbar_setup page-change", () => setTimeout(ensure, 300)); };
+    mod.init = function () {
+        ensure();
+        if (!mod.bound) {
+            mod.bound = true;
+            $(document).on("toolbar_setup.us_language_switch page-change.us_language_switch", () => setTimeout(ensure, 300));
+        }
+    };
+    mod.destroy = function () {
+        document.querySelectorAll(".us-language-switch").forEach((node) => node.remove());
+        if (mod.bound) {
+            $(document).off(".us_language_switch");
+            mod.bound = false;
+        }
+    };
 })();

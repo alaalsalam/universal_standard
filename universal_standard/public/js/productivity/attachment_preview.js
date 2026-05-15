@@ -49,7 +49,15 @@
         if (mod.initialized) { enhance(); return; }
         mod.initialized = true;
         enhance();
-        const observer = new MutationObserver(m => m.forEach(x => x.addedNodes.forEach(n => { if (n.nodeType === 1) enhance(n); })));
-        observer.observe(document.body, { childList: true, subtree: true });
+        mod.observer = new MutationObserver(m => m.forEach(x => x.addedNodes.forEach(n => { if (n.nodeType === 1) enhance(n); })));
+        mod.observer.observe(document.body, { childList: true, subtree: true });
+    };
+    mod.destroy = function () {
+        document.querySelectorAll(".us-preview-attachment").forEach((node) => node.remove());
+        if (mod.observer) {
+            mod.observer.disconnect();
+            mod.observer = null;
+        }
+        mod.initialized = false;
     };
 })();

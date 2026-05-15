@@ -14,5 +14,18 @@
         const target = document.querySelector(".navbar .navbar-collapse, .page-head .page-actions, .navbar");
         if (target) target.prepend(wrap);
     }
-    mod.init = function () { ensure(); $(document).on("toolbar_setup page-change", () => setTimeout(ensure, 300)); };
+    mod.init = function () {
+        ensure();
+        if (!mod.bound) {
+            mod.bound = true;
+            $(document).on("toolbar_setup.us_navbar_tools page-change.us_navbar_tools", () => setTimeout(ensure, 300));
+        }
+    };
+    mod.destroy = function () {
+        document.querySelectorAll(".us-navbar-tools").forEach((node) => node.remove());
+        if (mod.bound) {
+            $(document).off(".us_navbar_tools");
+            mod.bound = false;
+        }
+    };
 })();

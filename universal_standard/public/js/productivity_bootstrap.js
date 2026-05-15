@@ -43,6 +43,17 @@
         });
     }
 
+    function cleanupDisabled(settings) {
+        Object.keys(MODULES).forEach((moduleName) => {
+            const spec = MODULES[moduleName];
+            const module = NS[moduleName];
+            const shouldRun = Boolean(settings && settings.enable_productivity_tools && settings[spec.flag]);
+            if (!shouldRun && module && typeof module.destroy === "function") {
+                module.destroy();
+            }
+        });
+    }
+
     async function init() {
         if (NS.__initializing) return;
         NS.__initializing = true;
@@ -50,9 +61,11 @@
             const settings = await call("universal_standard.productivity.settings.get_productivity_settings");
             NS.settings = settings || {};
             if (!settings || !settings.enable_productivity_tools) {
+                cleanupDisabled(settings);
                 log(settings, "Productivity tools disabled");
                 return;
             }
+            cleanupDisabled(settings);
             const enabled = settings.enabled_modules || [];
             for (const moduleName of enabled) {
                 const spec = MODULES[moduleName];

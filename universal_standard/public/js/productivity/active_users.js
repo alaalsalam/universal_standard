@@ -22,4 +22,11 @@
         const interval = Math.max(parseInt(settings.active_users_refresh_interval || 120, 10), 60) * 1000;
         timer = setInterval(refresh, interval);
     };
+    mod.destroy = function () {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+        document.querySelectorAll(".us-active-users").forEach((node) => node.remove());
+    };
 })();
