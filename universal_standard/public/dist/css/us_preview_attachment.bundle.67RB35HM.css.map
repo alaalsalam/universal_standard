@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["../../../../../../../../tmp/tmp-2816865-jafqVJcJUOyi/universal_standard/universal_standard/public/css/us_preview_attachment.bundle.css"],
+  "sources": ["../../../../../../../../tmp/tmp-3488885-2DZwBUbZAWvq/universal_standard/universal_standard/public/css/us_preview_attachment.bundle.css"],
   "sourcesContent": ["/* ../../../../../tmp/tmp-928401-CiiWZYrgraIi/preview_attachment/preview_attachment/public/scss/preview_attachment.bundle.css */\n.json-preview-content {\n  background: #2d2d2d;\n  color: #f8f8f2;\n  border-radius: 5px;\n  padding: 15px;\n  font-family: \"Courier New\", monospace;\n  font-size: 14px;\n  overflow: auto;\n  max-height: 600px;\n  line-height: 1.5;\n}\n.json-preview-content span.key {\n  color: #66d9ef;\n}\n.json-preview-content span.string {\n  color: #a6e22e;\n}\n.json-preview-content span.number {\n  color: #ae81ff;\n}\n.json-preview-content span.boolean {\n  color: #f92672;\n}\n.json-preview-content span.null {\n  color: #75715e;\n}\n"],
-  "mappings": ";AACA;AACE;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AAAA;AAEF;AACE;AAAA;AAEF;AACE;AAAA;AAEF;AACE;AAAA;AAEF;AACE;AAAA;AAEF;AACE;AAAA;",
+  "mappings": "AACA,sBACE,mBACA,cAHF,+BAME,kCACA,eACA,cACA,iBACA,gBAEF,+BACE,cAEF,kCACE,cAEF,kCACE,cAEF,mCACE,cAEF,gCACE",
   "names": []
 }
