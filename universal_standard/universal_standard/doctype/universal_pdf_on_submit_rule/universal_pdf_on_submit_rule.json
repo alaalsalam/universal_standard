@@ -1,0 +1,90 @@
+{
+ "doctype": "DocType",
+ "name": "Universal PDF On Submit Rule",
+ "module": "Universal Standard",
+ "custom": 0,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 0,
+ "editable_grid": 1,
+ "track_changes": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "fields": [
+  {
+   "fieldname": "rule_name",
+   "label": "Rule Name",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "label": "Enabled",
+   "fieldtype": "Check",
+   "default": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "document_type",
+   "label": "Document Type",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "print_format",
+   "label": "Print Format",
+   "fieldtype": "Link",
+   "options": "Print Format"
+  },
+  {
+   "fieldname": "language",
+   "label": "Language",
+   "fieldtype": "Link",
+   "options": "Language"
+  },
+  {
+   "fieldname": "attach_to_document",
+   "label": "Attach To Document",
+   "fieldtype": "Check",
+   "default": 1
+  },
+  {
+   "fieldname": "submit_event",
+   "label": "Submit Event",
+   "fieldtype": "Select",
+   "options": "on_submit",
+   "default": "on_submit"
+  },
+  {
+   "fieldname": "run_in_background",
+   "label": "Run In Background",
+   "fieldtype": "Check",
+   "default": 1
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "report": 1,
+   "export": 1,
+   "share": 1
+  }
+ ],
+ "actions": [],
+ "links": [],
+ "states": [],
+ "autoname": "field:rule_name",
+ "title_field": "rule_name"
+}

@@ -1,0 +1,106 @@
+{
+ "doctype": "DocType",
+ "name": "Universal Standard Alert",
+ "module": "Universal Standard",
+ "custom": 0,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 0,
+ "editable_grid": 1,
+ "track_changes": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "fields": [
+  {
+   "fieldname": "title",
+   "label": "Title",
+   "fieldtype": "Data",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "enabled",
+   "label": "Enabled",
+   "fieldtype": "Check",
+   "default": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "alert_type",
+   "label": "Alert Type",
+   "fieldtype": "Select",
+   "options": "Info\nSuccess\nWarning\nError",
+   "default": "Info",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "priority",
+   "label": "Priority",
+   "fieldtype": "Select",
+   "options": "Low\nNormal\nHigh\nUrgent",
+   "default": "Normal"
+  },
+  {
+   "fieldname": "message",
+   "label": "Message",
+   "fieldtype": "Text Editor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "show_from",
+   "label": "Show From",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "show_to",
+   "label": "Show To",
+   "fieldtype": "Datetime"
+  },
+  {
+   "fieldname": "show_once",
+   "label": "Show Once",
+   "fieldtype": "Check",
+   "default": 1
+  },
+  {
+   "fieldname": "repeat",
+   "label": "Repeat",
+   "fieldtype": "Check",
+   "default": 0
+  },
+  {
+   "fieldname": "target_users",
+   "label": "Target Users",
+   "fieldtype": "Table",
+   "options": "Universal Standard Alert User"
+  },
+  {
+   "fieldname": "target_roles",
+   "label": "Target Roles",
+   "fieldtype": "Table",
+   "options": "Universal Standard Alert Role"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "submit": 0,
+   "cancel": 0,
+   "amend": 0,
+   "print": 1,
+   "email": 1,
+   "report": 1,
+   "export": 1,
+   "share": 1
+  }
+ ],
+ "actions": [],
+ "links": [],
+ "states": [],
+ "autoname": "field:title",
+ "title_field": "title"
+}

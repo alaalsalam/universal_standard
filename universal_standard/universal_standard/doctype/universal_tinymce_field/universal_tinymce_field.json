@@ -1,0 +1,40 @@
+{
+ "doctype": "DocType",
+ "name": "Universal TinyMCE Field",
+ "module": "Universal Standard",
+ "custom": 0,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "track_changes": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "fields": [
+  {
+   "fieldname": "document_type",
+   "label": "Document Type",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "fieldname",
+   "label": "Fieldname",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "enabled",
+   "label": "Enabled",
+   "fieldtype": "Check",
+   "default": 1
+  }
+ ],
+ "permissions": [],
+ "actions": [],
+ "links": [],
+ "states": []
+}

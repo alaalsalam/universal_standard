@@ -196,3 +196,23 @@ def impersonate_user(user: str):
     frappe.local.login_manager.login_as(user)
     add_authentication_log(f"{user} logged in", user)
     return {"status": "Success", "message": frappe._("Impersonated {0}").format(user)}
+
+
+
+# Universal Standard Productivity API wrappers
+@frappe.whitelist()
+def get_productivity_settings():
+    from universal_standard.productivity.settings import get_productivity_settings as _get
+    return _get()
+
+
+@frappe.whitelist()
+def clear_productivity_settings_cache():
+    from universal_standard.productivity.settings import clear_productivity_settings_cache as _clear
+    return _clear()
+
+
+@frappe.whitelist()
+def get_enabled_productivity_modules():
+    from universal_standard.productivity.settings import get_enabled_productivity_modules as _get
+    return _get()

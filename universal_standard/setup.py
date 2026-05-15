@@ -36,7 +36,17 @@ def ensure_saudi_riyal_currency_symbol():
 def after_install():
 	install_pdf_settings()
 	ensure_saudi_riyal_currency_symbol()
+	try:
+		from universal_standard.productivity.setup import after_migrate as productivity_after_migrate
+		productivity_after_migrate()
+	except Exception:
+		frappe.log_error(frappe.get_traceback(), "Universal Standard productivity install failed")
 
 
 def after_migrate():
 	ensure_saudi_riyal_currency_symbol()
+	try:
+		from universal_standard.productivity.setup import after_migrate as productivity_after_migrate
+		productivity_after_migrate()
+	except Exception:
+		frappe.log_error(frappe.get_traceback(), "Universal Standard productivity migration failed")
