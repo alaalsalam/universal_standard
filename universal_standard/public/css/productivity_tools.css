@@ -1,6 +1,14 @@
 .us-productivity-navbar-btn,
 .us-navbar-tools .btn {
     margin-inline-end: 6px;
+    min-height: 28px;
+    padding: 3px 9px;
+    border: 1px solid var(--border-color, #d1d8dd);
+    border-radius: 8px;
+    background: var(--fg-color, #fff);
+    color: var(--text-color, #36414c);
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 .us-navbar-tools {
@@ -22,8 +30,23 @@
     background: var(--fg-color, #fff);
 }
 
+.attachment-row:has(> .us-preview-attachment) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.attachment-row:has(> .us-preview-attachment) > .data-pill {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .us-preview-attachment {
-    margin-inline-end: 6px;
+    flex: 0 0 auto;
+    margin-inline-end: 0;
+    padding: 2px 7px;
+    font-size: 11px;
+    line-height: 1.4;
 }
 
 .us-preview-media,

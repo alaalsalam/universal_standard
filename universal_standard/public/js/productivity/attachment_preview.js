@@ -31,18 +31,17 @@
         root = root || document;
         root.querySelectorAll(".attachment-row").forEach(row => {
             if (row.querySelector(".us-preview-attachment")) return;
-            const link = row.querySelector("a[href]");
+            const link = row.querySelector('a[href^="/files/"], a[href^="/private/files/"], a[href*="/files/"]');
             if (!link) return;
             const url = link.getAttribute("href");
-            const name = (link.textContent || url || "").trim();
+            const name = (link.getAttribute("title") || link.textContent || url || "").trim();
             if (!typeOf(name || url)) return;
             const btn = document.createElement("button");
             btn.type = "button";
             btn.className = "btn btn-xs btn-secondary us-preview-attachment";
             btn.textContent = __("Preview");
             btn.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); preview(url, name); });
-            const target = row.querySelector(".data-pill") || row;
-            target.prepend(btn);
+            row.prepend(btn);
         });
     }
     mod.init = function () {
