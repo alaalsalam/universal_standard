@@ -1,269 +1,263 @@
 {
-    "doctype":  "DocType",
-    "name":  "Universal Standard Settings",
-    "module":  "Universal Standard",
-    "custom":  0,
-    "is_submittable":  0,
-    "issingle":  1,
-    "istable":  0,
-    "editable_grid":  1,
-    "track_changes":  1,
-    "sort_field":  "modified",
-    "sort_order":  "DESC",
-    "fields":  [
-                   {
-                       "fieldname":  "general_section",
-                       "label":  "General",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_productivity_tools",
-                       "label":  "Enable Productivity Tools",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "enable_debug_logs",
-                       "label":  "Enable Debug Logs",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "desk_ux_section",
-                       "label":  "Desk UX",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_attachment_preview",
-                       "label":  "Enable Attachment Preview",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "enable_sidebar_collapsed",
-                       "label":  "Enable Sidebar Collapsed",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "enable_list_unassign",
-                       "label":  "Enable List Unassign",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "column_break_1",
-                       "label":  "",
-                       "fieldtype":  "Column Break"
-                   },
-                   {
-                       "fieldname":  "enable_language_switcher",
-                       "label":  "Enable Language Switcher",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "language_switcher_languages",
-                       "label":  "Language Switcher Languages",
-                       "fieldtype":  "Data",
-                       "default":  "ar,en"
-                   },
-                   {
-                       "fieldname":  "enable_navbar_tools",
-                       "label":  "Enable Navbar Tools",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "users_activity_section",
-                       "label":  "Users / Activity",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_active_users",
-                       "label":  "Enable Active Users",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "active_users_refresh_interval",
-                       "label":  "Active Users Refresh Interval",
-                       "fieldtype":  "Int",
-                       "default":  120
-                   },
-                   {
-                       "fieldname":  "alerts_section",
-                       "label":  "Alerts",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_internal_alerts",
-                       "label":  "Enable Internal Alerts",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "export_section",
-                       "label":  "Export",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_export_defaults",
-                       "label":  "Enable Export Defaults",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "export_defaults",
-                       "label":  "Export Defaults",
-                       "fieldtype":  "Table",
-                       "options":  "Universal Export Default"
-                   },
-                   {
-                       "fieldname":  "security_access_section",
-                       "label":  "Security / Access",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_signup_controls",
-                       "label":  "Enable Signup Controls",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "blocked_signup_domains",
-                       "label":  "Blocked Signup Domains",
-                       "fieldtype":  "Small Text"
-                   },
-                   {
-                       "fieldname":  "block_admin_user_creation",
-                       "label":  "Block Administrator User Creation Too",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "column_break_2",
-                       "label":  "",
-                       "fieldtype":  "Column Break"
-                   },
-                   {
-                       "fieldname":  "enable_private_attachments_policy",
-                       "label":  "Enable Private Attachments Policy",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "make_attachments_private_by_default",
-                       "label":  "Make Attachments Private By Default",
-                       "fieldtype":  "Check",
-                       "default":  1
-                   },
-                   {
-                       "fieldname":  "public_attachment_allowed_doctypes",
-                       "label":  "Public Attachment Allowed DocTypes",
-                       "fieldtype":  "Table",
-                       "options":  "Universal Attachment DocType Rule"
-                   },
-                   {
-                       "fieldname":  "private_attachment_excluded_doctypes",
-                       "label":  "Private Attachment Excluded DocTypes",
-                       "fieldtype":  "Table",
-                       "options":  "Universal Attachment DocType Rule"
-                   },
-                   {
-                       "fieldname":  "enable_private_comments",
-                       "label":  "Enable Private Comments",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "business_utilities_section",
-                       "label":  "Business Utilities",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_item_translation",
-                       "label":  "Enable Item Translation",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "item_translation_target_doctypes",
-                       "label":  "Item Translation Target DocTypes",
-                       "fieldtype":  "Small Text",
-                       "default":  "Quotation\nSales Order\nSales Invoice\nDelivery Note\nPurchase Order\nPurchase Invoice"
-                   },
-                   {
-                       "fieldname":  "enable_pdf_on_submit",
-                       "label":  "Enable PDF on Submit",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "enable_msdoc_templates",
-                       "label":  "Enable MS Doc Templates",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "editor_section",
-                       "label":  "Editor",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_tinymce_optional",
-                       "label":  "Enable TinyMCE Optional",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "tinymce_fields",
-                       "label":  "TinyMCE Fields",
-                       "fieldtype":  "Table",
-                       "options":  "Universal TinyMCE Field"
-                   },
-                   {
-                       "fieldname":  "advanced_experimental_section",
-                       "label":  "Advanced / Experimental",
-                       "fieldtype":  "Section Break"
-                   },
-                   {
-                       "fieldname":  "enable_frappe_tools_safe_features",
-                       "label":  "Enable Frappe Tools Safe Features",
-                       "fieldtype":  "Check",
-                       "default":  0
-                   },
-                   {
-                       "fieldname":  "frappe_tools_safe_features",
-                       "label":  "Frappe Tools Safe Features",
-                       "fieldtype":  "Table",
-                       "options":  "Universal Safe Feature"
-                   }
-               ],
-    "permissions":  [
-                        {
-                            "role":  "System Manager",
-                            "read":  1,
-                            "write":  1,
-                            "create":  1,
-                            "delete":  1,
-                            "submit":  0,
-                            "cancel":  0,
-                            "amend":  0,
-                            "print":  1,
-                            "email":  1,
-                            "report":  1,
-                            "export":  1,
-                            "share":  1
-                        }
-                    ],
-    "actions":  [
-
-                ],
-    "links":  [
-
-              ],
-    "states":  [
-
-               ]
+    "doctype": "DocType",
+    "name": "Universal Standard Settings",
+    "module": "Universal Standard",
+    "custom": 0,
+    "is_submittable": 0,
+    "issingle": 1,
+    "istable": 0,
+    "editable_grid": 1,
+    "track_changes": 1,
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "fields": [
+        {
+            "fieldname": "general_section",
+            "label": "General",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_productivity_tools",
+            "label": "Enable Productivity Tools",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "enable_debug_logs",
+            "label": "Enable Debug Logs",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "desk_ux_section",
+            "label": "Desk UX",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_attachment_preview",
+            "label": "Enable Attachment Preview",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "enable_sidebar_collapsed",
+            "label": "Enable Sidebar Collapsed",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "enable_list_unassign",
+            "label": "Enable List Unassign",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "column_break_1",
+            "label": "",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "enable_language_switcher",
+            "label": "Enable Language Switcher",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "language_switcher_languages",
+            "label": "Language Switcher Languages",
+            "fieldtype": "Data",
+            "default": "ar,en"
+        },
+        {
+            "fieldname": "enable_navbar_tools",
+            "label": "Enable Navbar Tools",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "users_activity_section",
+            "label": "Users / Activity",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_active_users",
+            "label": "Enable Active Users",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "active_users_refresh_interval",
+            "label": "Active Users Refresh Interval",
+            "fieldtype": "Int",
+            "default": 120
+        },
+        {
+            "fieldname": "alerts_section",
+            "label": "Alerts",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_internal_alerts",
+            "label": "Enable Internal Alerts",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "export_section",
+            "label": "Export",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_export_defaults",
+            "label": "Enable Export Defaults",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "export_defaults",
+            "label": "Export Defaults",
+            "fieldtype": "Table",
+            "options": "Universal Export Default"
+        },
+        {
+            "fieldname": "security_access_section",
+            "label": "Security / Access",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_signup_controls",
+            "label": "Enable Signup Controls",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "blocked_signup_domains",
+            "label": "Blocked Signup Domains",
+            "fieldtype": "Small Text"
+        },
+        {
+            "fieldname": "block_admin_user_creation",
+            "label": "Block Administrator User Creation Too",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "column_break_2",
+            "label": "",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "enable_private_attachments_policy",
+            "label": "Enable Private Attachments Policy",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "make_attachments_private_by_default",
+            "label": "Make Attachments Private By Default",
+            "fieldtype": "Check",
+            "default": 1
+        },
+        {
+            "fieldname": "public_attachment_allowed_doctypes",
+            "label": "Public Attachment Allowed DocTypes",
+            "fieldtype": "Table",
+            "options": "Universal Attachment DocType Rule"
+        },
+        {
+            "fieldname": "private_attachment_excluded_doctypes",
+            "label": "Private Attachment Excluded DocTypes",
+            "fieldtype": "Table",
+            "options": "Universal Attachment DocType Rule"
+        },
+        {
+            "fieldname": "enable_private_comments",
+            "label": "Enable Private Comments",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "business_utilities_section",
+            "label": "Business Utilities",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_item_translation",
+            "label": "Enable Item Translation",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "item_translation_target_doctypes",
+            "label": "Item Translation Target DocTypes",
+            "fieldtype": "Small Text",
+            "default": "Quotation\nSales Order\nSales Invoice\nDelivery Note\nPurchase Order\nPurchase Invoice"
+        },
+        {
+            "fieldname": "enable_pdf_on_submit",
+            "label": "Enable PDF on Submit",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "enable_msdoc_templates",
+            "label": "Enable MS Doc Templates",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "editor_section",
+            "label": "Editor",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_tinymce_optional",
+            "label": "Enable TinyMCE Optional",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "tinymce_fields",
+            "label": "TinyMCE Fields",
+            "fieldtype": "Table",
+            "options": "Universal TinyMCE Field"
+        },
+        {
+            "fieldname": "advanced_experimental_section",
+            "label": "Advanced / Experimental",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "enable_frappe_tools_safe_features",
+            "label": "Enable Frappe Tools Safe Features",
+            "fieldtype": "Check",
+            "default": 0
+        },
+        {
+            "fieldname": "frappe_tools_safe_features",
+            "label": "Frappe Tools Safe Features",
+            "fieldtype": "Table",
+            "options": "Universal Safe Feature"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "submit": 0,
+            "cancel": 0,
+            "amend": 0,
+            "print": 1,
+            "email": 1,
+            "report": 1,
+            "export": 1,
+            "share": 1
+        }
+    ],
+    "actions": [],
+    "links": [],
+    "states": []
 }

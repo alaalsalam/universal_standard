@@ -1,17 +1,17 @@
-﻿import json
+import json
 import frappe
 
 CACHE_KEY = "universal_standard:productivity_settings"
 
 DEFAULTS = {
-	"enable_productivity_tools": 0,
+	"enable_productivity_tools": 1,
 	"enable_debug_logs": 0,
-	"enable_attachment_preview": 0,
-	"enable_sidebar_collapsed": 0,
-	"enable_list_unassign": 0,
-	"enable_language_switcher": 0,
+	"enable_attachment_preview": 1,
+	"enable_sidebar_collapsed": 1,
+	"enable_list_unassign": 1,
+	"enable_language_switcher": 1,
 	"language_switcher_languages": "ar,en",
-	"enable_navbar_tools": 0,
+	"enable_navbar_tools": 1,
 	"enable_active_users": 0,
 	"active_users_refresh_interval": 120,
 	"enable_internal_alerts": 0,
