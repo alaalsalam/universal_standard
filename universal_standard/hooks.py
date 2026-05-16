@@ -28,6 +28,7 @@ app_include_js = [
 
 doctype_js = {
 	"User": "public/js/us_user_impersonation.js",
+	"Universal Standard Settings": "public/js/universal_standard_settings.js",
 }
 
 web_include_css = [
