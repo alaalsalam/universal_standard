@@ -1,8 +1,9 @@
 (function () {
     const NS = (window.UniversalStandardProductivity = window.UniversalStandardProductivity || {});
-    const VERSION = "20260515_1";
+    const VERSION = "20260519_1";
     const MODULES = {
         attachment_preview: { flag: "enable_attachment_preview", path: "/assets/universal_standard/js/productivity/attachment_preview.js" },
+        file_merge: { flag: "enable_file_merge", path: "/assets/universal_standard/js/productivity/file_merge.js" },
         sidebar_collapsed: { flag: "enable_sidebar_collapsed", path: "/assets/universal_standard/js/productivity/sidebar_collapsed.js" },
         list_unassign: { flag: "enable_list_unassign", path: "/assets/universal_standard/js/productivity/list_unassign.js" },
         language_switcher: { flag: "enable_language_switcher", path: "/assets/universal_standard/js/productivity/language_switcher.js" },

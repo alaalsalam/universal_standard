@@ -40,6 +40,13 @@
             "default": 1
         },
         {
+            "fieldname": "enable_file_merge",
+            "label": "Enable File Merge",
+            "fieldtype": "Check",
+            "default": 1,
+            "description": "Merge selected PDFs and images into one PDF attachment from the file upload dialog."
+        },
+        {
             "fieldname": "enable_sidebar_collapsed",
             "label": "Enable Sidebar Collapsed",
             "fieldtype": "Check",

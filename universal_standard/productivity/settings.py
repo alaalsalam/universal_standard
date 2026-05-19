@@ -7,6 +7,7 @@ DEFAULTS = {
 	"enable_productivity_tools": 1,
 	"enable_debug_logs": 0,
 	"enable_attachment_preview": 1,
+	"enable_file_merge": 1,
 	"enable_sidebar_collapsed": 1,
 	"enable_list_unassign": 1,
 	"enable_language_switcher": 1,
@@ -100,6 +101,7 @@ def get_enabled_modules_from_settings(settings):
 		return []
 	mapping = {
 		"attachment_preview": "enable_attachment_preview",
+		"file_merge": "enable_file_merge",
 		"sidebar_collapsed": "enable_sidebar_collapsed",
 		"list_unassign": "enable_list_unassign",
 		"language_switcher": "enable_language_switcher",
@@ -138,6 +140,7 @@ def enable_safe_desk_features_for_development():
 	for fieldname in (
 		"enable_productivity_tools",
 		"enable_attachment_preview",
+		"enable_file_merge",
 		"enable_sidebar_collapsed",
 		"enable_list_unassign",
 		"enable_language_switcher",
