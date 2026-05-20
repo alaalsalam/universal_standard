@@ -1,29 +1,56 @@
-﻿(function () {
+(function () {
     const NS = (window.UniversalStandardProductivity = window.UniversalStandardProductivity || {});
     const mod = (NS.language_switcher = NS.language_switcher || {});
 
     const LABELS = {
-        ar: { short: "AR", name: "العربية" },
-        en: { short: "EN", name: "English" },
+        ar: { short: "AR", name: "العربية", flag: "🇸🇦" },
+        en: { short: "EN", name: "English", flag: "🇺🇸" },
     };
+
+    function __(text) {
+        return window.__ ? window.__(text) : text;
+    }
+
+    function escapeHtml(value) {
+        const text = value == null ? "" : String(value);
+        if (window.frappe && frappe.utils && frappe.utils.escape_html) return frappe.utils.escape_html(text);
+        return text.replace(/[&<>"']/g, function (char) {
+            return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char];
+        });
+    }
 
     function currentLanguage() {
         const boot = frappe.boot || {};
         const user = boot.user || {};
-        return String(boot.lang || user.language || "en").toLowerCase();
+        return String(boot.lang || user.language || "en").toLowerCase().split("-")[0];
     }
 
     function allowedLanguages(settings) {
         const raw = String((settings && settings.language_switcher_languages) || "ar,en");
-        return raw.split(/[\n,]+/).map((lang) => lang.trim().toLowerCase()).filter(Boolean);
+        const values = raw.split(/[\n,]+/).map((lang) => lang.trim().toLowerCase().split("-")[0]).filter(Boolean);
+        return Array.from(new Set(values.length ? values : ["ar", "en"]));
     }
 
     function languageLabel(lang) {
-        return LABELS[lang] || { short: lang.toUpperCase(), name: lang.toUpperCase() };
+        return LABELS[lang] || { short: lang.toUpperCase(), name: lang.toUpperCase(), flag: "🌐" };
     }
 
     function mountTarget() {
-        return document.querySelector(".navbar .navbar-collapse") || document.querySelector(".navbar") || document.querySelector(".page-head .page-actions");
+        return (
+            document.querySelector(".navbar .navbar-right") ||
+            document.querySelector(".navbar .navbar-nav.navbar-right") ||
+            document.querySelector(".navbar .navbar-collapse") ||
+            document.querySelector(".navbar") ||
+            document.querySelector(".page-head .page-actions")
+        );
+    }
+
+    function insertInHeader(wrap) {
+        const target = mountTarget();
+        if (!target || wrap.parentElement === target) return;
+        const help = target.querySelector(".help-dropdown, [data-label='Help'], .navbar-help");
+        if (help && help.parentElement === target) target.insertBefore(wrap, help);
+        else target.appendChild(wrap);
     }
 
     function build(settings) {
@@ -37,10 +64,10 @@
             wrap = document.createElement("div");
             wrap.className = "us-language-switcher dropdown";
             wrap.innerHTML = `
-                <button type="button" class="us-chip-button us-language-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="${__("Language")}">
-                    <span class="us-chip-icon" aria-hidden="true">◎</span>
-                    <span class="us-chip-text"></span>
-                    <span class="us-chip-caret" aria-hidden="true">⌄</span>
+                <button type="button" class="us-header-language-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="${escapeHtml(__("Language"))}">
+                    <span class="us-language-flag" aria-hidden="true"></span>
+                    <span class="us-language-short"></span>
+                    <span class="us-language-chevron" aria-hidden="true">⌄</span>
                 </button>
                 <div class="dropdown-menu us-language-menu"></div>
             `;
@@ -66,18 +93,19 @@
             });
         }
 
-        wrap.querySelector(".us-chip-text").textContent = active.name;
+        wrap.querySelector(".us-language-flag").textContent = active.flag;
+        wrap.querySelector(".us-language-short").textContent = active.short;
         const menu = wrap.querySelector(".us-language-menu");
         menu.innerHTML = languages.map((item) => {
             const label = languageLabel(item);
             const selected = item === lang ? " is-active" : "";
-            return `<button type="button" class="dropdown-item us-language-item${selected}" data-us-lang="${frappe.utils.escape_html(item)}">
-                <span>${frappe.utils.escape_html(label.name)}</span><span class="us-language-code">${frappe.utils.escape_html(label.short)}</span>
+            return `<button type="button" class="dropdown-item us-language-item${selected}" data-us-lang="${escapeHtml(item)}">
+                <span class="us-language-menu-main"><span class="us-language-menu-flag">${escapeHtml(label.flag)}</span><span>${escapeHtml(label.short)}</span></span>
+                <span class="us-language-name">${escapeHtml(label.name)}</span>
             </button>`;
         }).join("");
 
-        const target = mountTarget();
-        if (target && !wrap.parentElement) target.prepend(wrap);
+        insertInHeader(wrap);
     }
 
     mod.init = function (settings) {
