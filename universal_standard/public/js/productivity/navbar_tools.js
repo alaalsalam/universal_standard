@@ -61,6 +61,10 @@
     function ensure() {
         document.querySelectorAll(".us-navbar-tools").forEach((node, index) => { if (index > 0) node.remove(); });
         let wrap = document.querySelector(".us-navbar-tools");
+        if (wrap && !wrap.querySelector(".us-fullscreen-toggle")) {
+            wrap.remove();
+            wrap = null;
+        }
         if (!wrap) {
             wrap = document.createElement("div");
             wrap.className = "us-navbar-tools";

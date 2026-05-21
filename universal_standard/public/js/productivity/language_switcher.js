@@ -56,6 +56,10 @@
     function build(settings) {
         document.querySelectorAll(".us-language-switcher").forEach((node, index) => { if (index > 0) node.remove(); });
         let wrap = document.querySelector(".us-language-switcher");
+        if (wrap && !wrap.querySelector(".us-header-language-trigger")) {
+            wrap.remove();
+            wrap = null;
+        }
         const lang = currentLanguage();
         const languages = allowedLanguages(settings);
         const active = languageLabel(lang);
@@ -93,8 +97,14 @@
             });
         }
 
-        wrap.querySelector(".us-language-flag").textContent = active.flag;
-        wrap.querySelector(".us-language-short").textContent = active.short;
+        const flagNode = wrap.querySelector(".us-language-flag");
+        const shortNode = wrap.querySelector(".us-language-short");
+        if (!flagNode || !shortNode) {
+            wrap.remove();
+            return build(settings);
+        }
+        flagNode.textContent = active.flag;
+        shortNode.textContent = active.short;
         const menu = wrap.querySelector(".us-language-menu");
         menu.innerHTML = languages.map((item) => {
             const label = languageLabel(item);
