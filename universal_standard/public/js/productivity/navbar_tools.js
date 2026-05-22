@@ -7,13 +7,29 @@
     }
 
     function mountTarget() {
+        const nav = document.querySelector(".navbar");
         return (
-            document.querySelector(".navbar .navbar-right") ||
-            document.querySelector(".navbar .navbar-nav.navbar-right") ||
-            document.querySelector(".navbar .navbar-collapse") ||
-            document.querySelector(".navbar") ||
+            (nav && (nav.querySelector(".navbar-right") || nav.querySelector(".navbar-nav.navbar-right") || nav.querySelector(".navbar-collapse"))) ||
+            nav ||
             document.querySelector(".page-head .page-actions")
         );
+    }
+
+    function headerGroup() {
+        const target = mountTarget();
+        if (!target) return null;
+        let group = target.querySelector(".us-header-productivity-tools");
+        if (!group) {
+            group = document.createElement("div");
+            group.className = "us-header-productivity-tools";
+            const help = target.querySelector(".help-dropdown, [data-label='Help'], .navbar-help");
+            const user = target.querySelector(".avatar, .avatar-frame, .navbar-user, .dropdown-avatar");
+            const userWrap = user && (user.closest("li,.dropdown,.nav-item,.navbar-item") || user.parentElement);
+            if (help && help.parentElement === target) help.insertAdjacentElement("afterend", group);
+            else if (userWrap && userWrap.parentElement === target) target.insertBefore(group, userWrap);
+            else target.appendChild(group);
+        }
+        return group;
     }
 
     function icon(isFullscreen) {
@@ -50,14 +66,6 @@
         button.setAttribute("aria-label", active ? __("Exit Fullscreen") : __("Fullscreen"));
     }
 
-    function insertInHeader(wrap) {
-        const target = mountTarget();
-        if (!target || wrap.parentElement === target) return;
-        const language = target.querySelector(".us-language-switcher");
-        if (language && language.parentElement === target) target.insertBefore(wrap, language.nextSibling);
-        else target.appendChild(wrap);
-    }
-
     function ensure() {
         document.querySelectorAll(".us-navbar-tools").forEach((node, index) => { if (index > 0) node.remove(); });
         let wrap = document.querySelector(".us-navbar-tools");
@@ -79,7 +87,8 @@
                 });
             });
         }
-        insertInHeader(wrap);
+        const group = headerGroup();
+        if (group && wrap.parentElement !== group) group.appendChild(wrap);
         refreshState();
     }
 
