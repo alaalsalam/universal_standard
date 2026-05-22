@@ -3,8 +3,8 @@
     const mod = (NS.language_switcher = NS.language_switcher || {});
 
     const LABELS = {
-        ar: { short: "AR", name: "العربية", flag: "🇸🇦" },
-        en: { short: "EN", name: "English", flag: "🇺🇸" },
+        ar: { short: "AR", name: "العربية", flagClass: "us-flag-ar" },
+        en: { short: "EN", name: "English", flagClass: "us-flag-en" },
     };
 
     function __(text) {
@@ -32,7 +32,7 @@
     }
 
     function languageLabel(lang) {
-        return LABELS[lang] || { short: lang.toUpperCase(), name: lang.toUpperCase(), flag: "🌐" };
+        return LABELS[lang] || { short: lang.toUpperCase(), name: lang.toUpperCase(), flagClass: "us-flag-generic" };
     }
 
     function mountTarget() {
@@ -51,6 +51,19 @@
         const help = target.querySelector(".help-dropdown, [data-label='Help'], .navbar-help");
         if (help && help.parentElement === target) target.insertBefore(wrap, help);
         else target.appendChild(wrap);
+    }
+
+    function hideLegacyLanguageControls() {
+        const navbar = document.querySelector(".navbar");
+        if (!navbar) return;
+        navbar.querySelectorAll(".language-toggle, [data-original-title='Switch Language'], [title='Switch Language']").forEach((node) => {
+            if (!node.closest(".us-language-switcher")) node.classList.add("us-hidden-legacy-language");
+        });
+        navbar.querySelectorAll("a, button, span, div").forEach((node) => {
+            if (node.closest(".us-language-switcher")) return;
+            const text = (node.textContent || "").trim();
+            if (text === "العربية" || text === "English") node.classList.add("us-hidden-legacy-language");
+        });
     }
 
     function build(settings) {
@@ -103,19 +116,21 @@
             wrap.remove();
             return build(settings);
         }
-        flagNode.textContent = active.flag;
+        flagNode.className = "us-language-flag us-flag " + active.flagClass;
+        flagNode.textContent = "";
         shortNode.textContent = active.short;
         const menu = wrap.querySelector(".us-language-menu");
         menu.innerHTML = languages.map((item) => {
             const label = languageLabel(item);
             const selected = item === lang ? " is-active" : "";
             return `<button type="button" class="dropdown-item us-language-item${selected}" data-us-lang="${escapeHtml(item)}">
-                <span class="us-language-menu-main"><span class="us-language-menu-flag">${escapeHtml(label.flag)}</span><span>${escapeHtml(label.short)}</span></span>
+                <span class="us-language-menu-main"><span class="us-language-menu-flag us-flag ${escapeHtml(label.flagClass)}"></span><span>${escapeHtml(label.short)}</span></span>
                 <span class="us-language-name">${escapeHtml(label.name)}</span>
             </button>`;
         }).join("");
 
         insertInHeader(wrap);
+        hideLegacyLanguageControls();
     }
 
     mod.init = function (settings) {
