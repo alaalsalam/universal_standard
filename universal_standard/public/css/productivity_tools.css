@@ -218,7 +218,8 @@
     gap: 8px;
 }
 
-.attachment-row:has(.us-preview-attachment) > .data-pill {
+.attachment-row:has(.us-preview-attachment) > .data-pill,
+.attachment-row:has(.us-preview-attachment) > a {
     flex: 1 1 auto;
     min-width: 0;
 }
@@ -226,22 +227,51 @@
 .us-preview-attachment {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    justify-content: center;
     flex: 0 0 auto;
-    min-height: 24px;
-    padding: 3px 8px;
-    border: 1px solid var(--border-color, #d1d8dd);
-    border-radius: 999px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
     background: var(--control-bg, #f4f5f6);
     color: var(--text-color, #36414c);
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1.2;
+    line-height: 1;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.03);
+    transition: background 140ms ease, color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
 }
 
-.us-preview-attachment:hover {
-    border-color: var(--primary, #2490ef);
+.us-preview-attachment:hover,
+.us-preview-attachment:focus-visible {
+    background: var(--btn-default-hover-bg, #eef0f2);
     color: var(--primary, #2490ef);
+    box-shadow: inset 0 0 0 1px rgba(36, 144, 239, 0.18), 0 2px 8px rgba(15, 23, 42, 0.06);
+    outline: none;
+}
+
+.us-preview-attachment:active {
+    transform: translateY(1px);
+}
+
+.us-preview-attachment-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.us-attachment-preview-dialog .modal-dialog {
+    max-width: min(920px, calc(100vw - 48px));
+}
+
+.us-attachment-preview-dialog .modal-content {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.us-attachment-preview-dialog .modal-body {
+    padding: 16px 18px 18px;
 }
 
 .us-preview-toolbar {
@@ -249,7 +279,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 10px 0 12px;
+    padding: 0 0 12px;
     border-bottom: 1px solid var(--border-color, #d1d8dd);
 }
 
@@ -276,24 +306,26 @@
 .us-preview-media-wrap {
     display: grid;
     place-items: center;
-    min-height: 60vh;
+    min-height: 360px;
+    max-height: 58vh;
     background: var(--control-bg, #f8fafc);
     border: 1px solid var(--border-color, #e5e7eb);
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
 }
 
 .us-preview-media {
     width: 100%;
-    max-height: 70vh;
+    max-height: 58vh;
     object-fit: contain;
 }
 
 .us-preview-frame {
     width: 100%;
-    min-height: 70vh;
+    height: min(58vh, 620px);
+    min-height: 420px;
     border: 1px solid var(--border-color, #e5e7eb);
-    border-radius: 10px;
+    border-radius: 12px;
     background: var(--fg-color, #fff);
 }
 
@@ -301,13 +333,15 @@
     direction: ltr;
     text-align: left;
     white-space: pre-wrap;
-    max-height: 70vh;
+    max-height: min(56vh, 560px);
     overflow: auto;
     background: var(--control-bg, #f8fafc);
     border: 1px solid var(--border-color, #e5e7eb);
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 14px;
     color: var(--text-color, #1f2937);
+    font-size: 12px;
+    line-height: 1.6;
 }
 
 .us-preview-loading,
@@ -315,10 +349,10 @@
     display: grid;
     gap: 10px;
     place-items: center;
-    min-height: 240px;
+    min-height: 220px;
     padding: 28px;
     border: 1px dashed var(--border-color, #d1d8dd);
-    border-radius: 10px;
+    border-radius: 12px;
     background: var(--control-bg, #f8fafc);
     text-align: center;
 }
@@ -396,6 +430,11 @@ body[dir="rtl"] .us-preview-text {
         max-width: none;
     }
 
+    .us-attachment-preview-dialog .modal-dialog {
+        max-width: calc(100vw - 20px);
+        margin: 10px auto;
+    }
+
     .us-preview-toolbar {
         align-items: stretch;
         flex-direction: column;
@@ -404,6 +443,12 @@ body[dir="rtl"] .us-preview-text {
     .us-preview-actions {
         justify-content: flex-start;
         flex-wrap: wrap;
+    }
+
+    .us-preview-media-wrap,
+    .us-preview-frame {
+        min-height: 300px;
+        height: 52vh;
     }
 }
 

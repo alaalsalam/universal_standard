@@ -44,7 +44,7 @@
         const type = typeOf(displayName || url);
         const dialog = new frappe.ui.Dialog({
             title: displayName,
-            size: "extra-large",
+            size: "large",
             fields: [{ fieldtype: "HTML", fieldname: "body" }],
         });
         const area = dialog.fields_dict.body.$wrapper;
@@ -76,6 +76,7 @@
             renderUnsupported(body, url, displayName);
         }
         dialog.show();
+        if (dialog.$wrapper) dialog.$wrapper.addClass("us-attachment-preview-dialog");
     }
 
     function enhance(root) {
@@ -89,14 +90,20 @@
             const btn = document.createElement("button");
             btn.type = "button";
             btn.className = "us-preview-attachment";
-            btn.innerHTML = `<span aria-hidden="true">◉</span><span>${__("Preview")}</span>`;
+            btn.setAttribute("aria-label", __("Preview attachment"));
+            btn.setAttribute("title", __("Preview"));
+            btn.innerHTML = `
+                <svg class="us-preview-attachment-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M2.25 12s3.5-6.25 9.75-6.25S21.75 12 21.75 12s-3.5 6.25-9.75 6.25S2.25 12 2.25 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 15.25A3.25 3.25 0 1 0 12 8.75a3.25 3.25 0 0 0 0 6.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`;
             btn.addEventListener("click", (event) => {
                 event.preventDefault();
                 event.stopPropagation();
                 preview(url, name);
             });
-            const pill = row.querySelector(".data-pill") || row.firstElementChild;
-            if (pill && pill.parentNode === row) row.insertBefore(btn, pill.nextSibling);
+            const pill = row.querySelector(".data-pill") || row.querySelector("a") || row.firstElementChild;
+            if (pill && pill.parentNode === row) row.insertBefore(btn, pill);
             else row.appendChild(btn);
         });
     }
