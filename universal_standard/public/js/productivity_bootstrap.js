@@ -1,6 +1,6 @@
 (function () {
     const NS = (window.UniversalStandardProductivity = window.UniversalStandardProductivity || {});
-    const VERSION = "20260522_2";
+    const VERSION = "20260523_1";
     const MODULES = {
         attachment_preview: { flag: "enable_attachment_preview", path: "/assets/universal_standard/js/productivity/attachment_preview.js" },
         file_merge: { flag: "enable_file_merge", path: "/assets/universal_standard/js/productivity/file_merge.js" },
