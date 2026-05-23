@@ -3,8 +3,8 @@
     const mod = (NS.language_switcher = NS.language_switcher || {});
 
     const LABELS = {
-        ar: { short: "AR", name: "العربية" },
-        en: { short: "EN", name: "English" },
+        ar: { short: "AR", name: "العربية", flagClass: "us-flag-ar" },
+        en: { short: "EN", name: "English", flagClass: "us-flag-en" },
     };
 
     function __(text) {
@@ -32,7 +32,7 @@
     }
 
     function languageLabel(lang) {
-        return LABELS[lang] || { short: lang.toUpperCase(), name: lang.toUpperCase() };
+        return LABELS[lang] || { short: lang.toUpperCase(), name: lang.toUpperCase(), flagClass: "us-flag-generic" };
     }
 
     function navbar() {
@@ -90,12 +90,9 @@
     function insertInHeader(wrap) {
         const target = mountTarget();
         if (!target) return;
-        const help = findHelpElement(target);
         const user = target.querySelector(".avatar, .avatar-frame, .navbar-user, .dropdown-avatar");
         const userWrap = user && (user.closest("li,.dropdown,.nav-item,.navbar-item") || user.parentElement);
-        if (help && help.parentElement === target) {
-            if (wrap.previousElementSibling !== help) help.insertAdjacentElement("afterend", wrap);
-        } else if (userWrap && userWrap.parentElement === target) {
+        if (userWrap && userWrap.parentElement === target) {
             if (wrap.nextElementSibling !== userWrap) target.insertBefore(wrap, userWrap);
         } else if (wrap.parentElement !== target) {
             target.appendChild(wrap);
@@ -121,7 +118,9 @@
             wrap.className = "us-language-switcher dropdown";
             wrap.innerHTML = `
                 <button type="button" class="us-header-language-trigger" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="${escapeHtml(__("Language"))}">
+                    <span class="us-language-mark us-flag" aria-hidden="true"></span>
                     <span class="us-language-short"></span>
+                    <span class="us-language-chevron" aria-hidden="true">⌄</span>
                 </button>
                 <div class="dropdown-menu us-language-menu"></div>
             `;
@@ -147,19 +146,21 @@
             });
         }
 
+        const markNode = wrap.querySelector(".us-language-mark");
         const shortNode = wrap.querySelector(".us-language-short");
         const menu = wrap.querySelector(".us-language-menu");
-        if (!shortNode || !menu) {
+        if (!markNode || !shortNode || !menu) {
             wrap.remove();
             return build(settings);
         }
+        markNode.className = "us-language-mark us-flag " + active.flagClass;
         shortNode.textContent = active.short;
         wrap.querySelector(".us-header-language-trigger").setAttribute("aria-label", active.name);
         menu.innerHTML = languages.map((item) => {
             const label = languageLabel(item);
             const selected = item === lang ? " is-active" : "";
             return `<button type="button" class="dropdown-item us-language-item${selected}" data-us-lang="${escapeHtml(item)}">
-                <span class="us-language-menu-main"><span class="us-language-menu-code">${escapeHtml(label.short)}</span><span>${escapeHtml(label.name)}</span></span>
+                <span class="us-language-menu-main"><span class="us-language-menu-code us-flag ${escapeHtml(label.flagClass)}"></span><span>${escapeHtml(label.short)}</span><span>${escapeHtml(label.name)}</span></span>
             </button>`;
         }).join("");
 
