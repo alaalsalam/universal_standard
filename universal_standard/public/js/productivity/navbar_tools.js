@@ -65,7 +65,7 @@
         }
         const lang = document.querySelector(".us-language-switcher");
         if (lang) {
-            if (lang.nextElementSibling !== wrap) lang.insertAdjacentElement("afterend", wrap);
+            if (wrap.nextElementSibling !== lang) lang.insertAdjacentElement("beforebegin", wrap);
         } else {
             const mount = target();
             if (mount && wrap.parentElement !== mount) mount.appendChild(wrap);
