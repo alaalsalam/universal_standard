@@ -93,7 +93,7 @@
         const user = target.querySelector(".avatar, .avatar-frame, .navbar-user, .dropdown-avatar");
         const userWrap = user && (user.closest("li,.dropdown,.nav-item,.navbar-item") || user.parentElement);
         if (userWrap && userWrap.parentElement === target) {
-            if (wrap.nextElementSibling !== userWrap) target.insertBefore(wrap, userWrap);
+            if (userWrap.nextElementSibling !== wrap) userWrap.insertAdjacentElement("afterend", wrap);
         } else if (wrap.parentElement !== target) {
             target.appendChild(wrap);
         }
