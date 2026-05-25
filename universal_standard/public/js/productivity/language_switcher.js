@@ -87,13 +87,21 @@
         );
     }
 
+    function isRowReverse(target) {
+        return window.getComputedStyle && window.getComputedStyle(target).flexDirection === "row-reverse";
+    }
+
     function insertInHeader(wrap) {
         const target = mountTarget();
         if (!target) return;
         const user = target.querySelector(".avatar, .avatar-frame, .navbar-user, .dropdown-avatar");
         const userWrap = user && (user.closest("li,.dropdown,.nav-item,.navbar-item") || user.parentElement);
         if (userWrap && userWrap.parentElement === target) {
-            if (wrap.nextElementSibling !== userWrap) target.insertBefore(wrap, userWrap);
+            if (isRowReverse(target)) {
+                if (userWrap.nextElementSibling !== wrap) userWrap.insertAdjacentElement("afterend", wrap);
+            } else if (wrap.nextElementSibling !== userWrap) {
+                target.insertBefore(wrap, userWrap);
+            }
         } else if (wrap.parentElement !== target) {
             target.appendChild(wrap);
         }

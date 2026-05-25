@@ -65,7 +65,13 @@
         }
         const lang = document.querySelector(".us-language-switcher");
         if (lang) {
-            if (wrap.nextElementSibling !== lang) lang.insertAdjacentElement("beforebegin", wrap);
+            const mount = target();
+            const rowReverse = mount && window.getComputedStyle && window.getComputedStyle(mount).flexDirection === "row-reverse";
+            if (rowReverse) {
+                if (lang.nextElementSibling !== wrap) lang.insertAdjacentElement("afterend", wrap);
+            } else if (wrap.nextElementSibling !== lang) {
+                lang.insertAdjacentElement("beforebegin", wrap);
+            }
         } else {
             const mount = target();
             if (mount && wrap.parentElement !== mount) mount.appendChild(wrap);
