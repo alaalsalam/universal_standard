@@ -13,4 +13,8 @@
             });
         }});
     };
+
+    mod.destroy = function () {
+        mod.initialized = false;
+    };
 })();
