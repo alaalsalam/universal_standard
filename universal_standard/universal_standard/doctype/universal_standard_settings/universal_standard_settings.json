@@ -50,7 +50,8 @@
             "fieldname": "enable_sidebar_collapsed",
             "label": "Enable Sidebar Collapsed",
             "fieldtype": "Check",
-            "default": 1
+            "default": 0,
+            "description": "Optional. Disabled by default because it may affect workspace and form layouts."
         },
         {
             "fieldname": "enable_list_unassign",

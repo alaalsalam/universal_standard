@@ -8,7 +8,7 @@ DEFAULTS = {
 	"enable_debug_logs": 0,
 	"enable_attachment_preview": 1,
 	"enable_file_merge": 1,
-	"enable_sidebar_collapsed": 1,
+	"enable_sidebar_collapsed": 0,
 	"enable_list_unassign": 1,
 	"enable_language_switcher": 1,
 	"language_switcher_languages": "ar,en",
