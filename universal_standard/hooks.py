@@ -12,21 +12,15 @@ def _v(path: str) -> str:
 	return f"{path}?v={ASSET_VERSION}"
 
 
-# Only component-scoped styles are loaded. Frappe v16 owns the global Desk
-# layout, navbar, cards, spacing, and typography.
-app_include_css = [
-	_v("/assets/universal_standard/css/productivity_tools.css"),
-]
+# No frontend CSS or JavaScript is injected. Frappe v16 owns the complete Desk
+# layout, navbar, workspace, sidebar, cards, spacing, and typography.
+app_include_css = []
 
-app_include_js = [
-	_v("/assets/universal_standard/js/universal_standard_v2.js"),
-	_v("/assets/universal_standard/js/productivity_bootstrap.js"),
-]
+# No global Desk JavaScript injection. This keeps the official Frappe v16
+# navbar, workspace, sidebar, and interaction behavior untouched.
+app_include_js = []
 
-doctype_js = {
-	"User": "public/js/us_user_impersonation.js",
-	"Universal Standard Settings": "public/js/universal_standard_settings.js",
-}
+doctype_js = {}
 
 web_include_css = []
 
