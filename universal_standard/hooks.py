@@ -12,17 +12,12 @@ def _v(path: str) -> str:
 	return f"{path}?v={ASSET_VERSION}"
 
 
-app_include_css = [
-	_v("/assets/universal_standard/css/universal_standard_v2.css"),
-	_v("/assets/universal_standard/css/us_themes.bundle.css"),
-	_v("/assets/universal_standard/css/css-rtl/us_translations_ar_eg.css"),
-	_v("/assets/universal_standard/css/productivity_tools.css"),
-]
+# No global CSS is injected into the Desk. Frappe v16 owns the layout and
+# component styling; productivity features must not override it.
+app_include_css = []
 
 app_include_js = [
 	_v("/assets/universal_standard/js/universal_standard_v2.js"),
-	_v("/assets/universal_standard/js/us_custom_sidebar.js"),
-	_v("/assets/universal_standard/js/us_themes.bundle.js"),
 	_v("/assets/universal_standard/js/productivity_bootstrap.js"),
 ]
 
@@ -31,14 +26,9 @@ doctype_js = {
 	"Universal Standard Settings": "public/js/universal_standard_settings.js",
 }
 
-web_include_css = [
-	_v("/assets/universal_standard/css/universal_standard_v2.css"),
-	_v("/assets/universal_standard/css/css-rtl/us_translations_ar_eg.css"),
-]
+web_include_css = []
 
-app_include_icons = [
-	"universal_standard/icons/my_custom_icons.svg",
-]
+app_include_icons = []
 
 after_install = "universal_standard.setup.after_install"
 after_migrate = "universal_standard.setup.after_migrate"
@@ -58,9 +48,7 @@ doc_events = {
 	},
 }
 
-override_whitelisted_methods = {
-	"frappe.core.doctype.user.user.switch_theme": "universal_standard.api.switch_theme"
-}
+override_whitelisted_methods = {}
 
 fixtures = [
 	{
