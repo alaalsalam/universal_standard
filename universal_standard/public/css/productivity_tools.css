@@ -1,4 +1,4 @@
-﻿.us-language-switcher {
+.us-language-switcher {
     display: inline-flex;
     align-items: center;
     margin-inline: 6px 10px;
@@ -588,4 +588,261 @@ body[dir="rtl"] .us-file-merge-row {
     .us-file-merge-actions {
         justify-content: flex-start;
     }
+}
+
+/* Final Desk header control layout: account, language, fullscreen. */
+.navbar .navbar-right,
+.navbar .navbar-nav.navbar-right,
+.navbar .us-productivity-navbar-target {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    gap: 0 !important;
+}
+
+.navbar .us-header-account-slot {
+    order: 901 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+.navbar .us-language-switcher {
+    order: 902 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    height: 42px !important;
+    margin-inline: 8px 4px !important;
+}
+
+.navbar .us-navbar-tools {
+    order: 903 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    height: 42px !important;
+    margin-inline: 0 6px !important;
+}
+
+.navbar .us-language-switcher.dropdown,
+.navbar .us-language-switcher.dropdown.show,
+.navbar .us-language-switcher.open {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.navbar .us-language-switcher .us-header-language-trigger,
+.navbar button.us-header-language-trigger {
+    width: auto !important;
+    min-width: 86px !important;
+    max-width: 104px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 7px !important;
+    padding: 0 5px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: var(--text-color, #111827) !important;
+    font-size: 16px !important;
+    font-weight: 760 !important;
+    letter-spacing: 0 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+}
+
+.navbar .us-language-switcher .us-header-language-trigger:hover,
+.navbar .us-language-switcher .us-header-language-trigger:focus-visible,
+.navbar .us-navbar-tools .us-header-icon-button:hover,
+.navbar .us-navbar-tools .us-header-icon-button:focus-visible {
+    background: var(--control-bg, rgba(15, 23, 42, 0.06)) !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    transform: none !important;
+}
+
+.navbar .us-language-switcher .us-header-language-trigger:focus-visible,
+.navbar .us-navbar-tools .us-header-icon-button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(36, 144, 239, 0.24) !important;
+}
+
+.navbar .us-language-switcher .us-language-mark {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    border-radius: 999px !important;
+    box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.10) !important;
+}
+
+.navbar .us-language-switcher .us-language-short {
+    min-width: 22px !important;
+    display: inline-block !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+.navbar .us-language-switcher .us-language-chevron {
+    width: 13px !important;
+    min-width: 13px !important;
+    color: var(--text-muted, #4b5563) !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    transform: translateY(-1px) !important;
+}
+
+.navbar .us-navbar-tools .us-header-icon-button,
+.navbar button.us-fullscreen-toggle {
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--text-color, #111827) !important;
+    cursor: pointer !important;
+}
+
+.navbar .us-navbar-tools .us-header-icon-button svg,
+.navbar button.us-fullscreen-toggle svg {
+    width: 21px !important;
+    height: 21px !important;
+    display: block !important;
+    fill: currentColor !important;
+}
+
+.navbar .us-navbar-tools .us-header-icon-button.is-active {
+    background: var(--control-bg, rgba(36, 144, 239, 0.12)) !important;
+    color: var(--primary, #2490ef) !important;
+}
+
+.navbar .us-hidden-legacy-language,
+.navbar .language-toggle:not(.us-header-language-trigger),
+.navbar .language-switcher:not(.us-language-switcher) {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+@media (max-width: 992px) {
+    .navbar .us-language-switcher .us-header-language-trigger {
+        min-width: 74px !important;
+        gap: 5px !important;
+    }
+
+    .navbar .us-language-switcher .us-language-mark {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+}
+
+/* Active users belongs to the right-side Desk controls, not the far edge. */
+.navbar .us-active-users {
+    order: 900 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    height: 38px !important;
+    margin-inline: 4px 8px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.navbar .us-active-users-trigger {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    min-width: 44px !important;
+    height: 32px !important;
+    padding: 0 9px !important;
+    border: 1px solid var(--border-color, #d8dee6) !important;
+    border-radius: 999px !important;
+    background: var(--fg-color, #fff) !important;
+    color: var(--text-color, #1f2937) !important;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+    font-size: 12px !important;
+    font-weight: 760 !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+}
+
+.navbar .us-active-users-trigger:hover,
+.navbar .us-active-users-trigger:focus-visible {
+    background: var(--control-bg, #f4f5f6) !important;
+    outline: 0 !important;
+}
+
+.navbar .us-active-users-dot {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 999px !important;
+    background: #22c55e !important;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14) !important;
+}
+
+.navbar .us-active-users-count {
+    min-width: 9px !important;
+    text-align: center !important;
+    font-variant-numeric: tabular-nums !important;
+}
+
+.navbar .us-active-users-menu {
+    min-width: 220px !important;
+    max-width: 280px !important;
+    padding: 8px !important;
+    border: 1px solid var(--border-color, #d1d8dd) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.15) !important;
+}
+
+.navbar .us-active-users-row {
+    display: grid !important;
+    gap: 2px !important;
+    padding: 8px 9px !important;
+    border-radius: 9px !important;
+}
+
+.navbar .us-active-users-row:hover {
+    background: var(--control-bg, #f4f5f6) !important;
+}
+
+.navbar .us-active-users-row span {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 13px !important;
+    font-weight: 650 !important;
+}
+
+.navbar .us-active-users-row small,
+.navbar .us-active-users-empty {
+    color: var(--text-muted, #6b7280) !important;
+    font-size: 11px !important;
 }

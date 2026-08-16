@@ -25,6 +25,13 @@ def _ensure_feature_enabled():
 		frappe.throw(_("File merge is disabled in Universal Standard Settings"), frappe.PermissionError)
 
 
+def _ensure_max_file_size_config_as_int():
+	max_file_size = frappe.conf.get("max_file_size")
+	if isinstance(max_file_size, str):
+		frappe.conf["max_file_size"] = cint(max_file_size) if max_file_size else 10485760
+	elif max_file_size is None:
+		frappe.conf["max_file_size"] = 10485760
+
 def _parse_files(files):
 	if isinstance(files, str):
 		files = json.loads(files or "[]")
@@ -140,6 +147,7 @@ def merge_and_upload(files, filename=None, doctype=None, docname=None, fieldname
 	"""Merge selected PDFs/images and save the result as a File document."""
 	_ensure_feature_enabled()
 	_validate_attachment_target(doctype, docname)
+	_ensure_max_file_size_config_as_int()
 
 	filename = (filename or "merged-file.pdf").strip()
 	if not filename.lower().endswith(".pdf"):

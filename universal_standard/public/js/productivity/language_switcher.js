@@ -19,6 +19,46 @@
         });
     }
 
+
+    function ensureNavbarPolishStyle() {
+        if (document.getElementById("us-productivity-navbar-polish-style")) return;
+        const style = document.createElement("style");
+        style.id = "us-productivity-navbar-polish-style";
+        style.textContent = `
+            html body .navbar .us-productivity-navbar-target { display:flex !important; align-items:center !important; flex-direction:row !important; gap:0 !important; }
+            html body .navbar .us-header-account-slot { order:901 !important; display:inline-flex !important; align-items:center !important; }
+            html body .navbar .us-language-switcher { order:902 !important; display:inline-flex !important; align-items:center !important; flex:0 0 auto !important; height:38px !important; margin-inline:7px 3px !important; padding:0 !important; border:0 !important; background:transparent !important; box-shadow:none !important; }
+            html body .navbar .us-language-switcher .us-header-language-trigger { width:auto !important; min-width:76px !important; max-width:92px !important; height:36px !important; min-height:36px !important; max-height:36px !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; gap:6px !important; padding:0 4px !important; margin:0 !important; border:0 !important; border-radius:9px !important; background:transparent !important; box-shadow:none !important; color:var(--text-color,#111827) !important; font-size:15px !important; font-weight:760 !important; line-height:1 !important; letter-spacing:0 !important; cursor:pointer !important; }
+            html body .navbar .us-language-switcher .us-header-language-trigger:hover,
+            html body .navbar .us-language-switcher .us-header-language-trigger:focus-visible,
+            html body .navbar .us-navbar-tools .us-header-icon-button:hover,
+            html body .navbar .us-navbar-tools .us-header-icon-button:focus-visible { background:var(--control-bg,rgba(15,23,42,.06)) !important; box-shadow:none !important; outline:0 !important; transform:none !important; }
+            html body .navbar .us-language-switcher .us-language-mark { width:31px !important; min-width:31px !important; height:31px !important; min-height:31px !important; border-radius:999px !important; box-shadow:inset 0 0 0 1px rgba(15,23,42,.12) !important; }
+            html body .navbar .us-language-switcher .us-language-short { min-width:21px !important; display:inline-block !important; text-align:center !important; line-height:1 !important; }
+            html body .navbar .us-language-switcher .us-language-chevron { width:12px !important; min-width:12px !important; color:var(--text-muted,#4b5563) !important; font-size:15px !important; line-height:1 !important; margin:0 !important; transform:translateY(-1px) !important; }
+            html body .navbar .us-navbar-tools { order:903 !important; display:inline-flex !important; align-items:center !important; flex:0 0 auto !important; height:38px !important; margin-inline:0 6px !important; padding:0 !important; border:0 !important; background:transparent !important; box-shadow:none !important; }
+            html body .navbar .us-navbar-tools .us-header-icon-button { width:36px !important; min-width:36px !important; height:36px !important; min-height:36px !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; padding:0 !important; margin:0 !important; border:0 !important; border-radius:9px !important; background:transparent !important; box-shadow:none !important; color:var(--text-color,#111827) !important; cursor:pointer !important; }
+            html body .navbar .us-navbar-tools .us-header-icon-button svg { width:20px !important; height:20px !important; display:block !important; fill:currentColor !important; }
+            html body .navbar .us-hidden-legacy-language,
+            html body .navbar .language-toggle:not(.us-header-language-trigger),
+            html body .navbar .language-switcher:not(.us-language-switcher) { display:none !important; visibility:hidden !important; width:0 !important; min-width:0 !important; height:0 !important; min-height:0 !important; padding:0 !important; margin:0 !important; overflow:hidden !important; }
+        `;
+        document.head.appendChild(style);
+    }
+
+    function applyInlinePolish(wrap) {
+        if (!wrap) return;
+        wrap.style.cssText = "order:902;display:inline-flex;align-items:center;flex:0 0 auto;height:38px;margin-inline:7px 3px;padding:0;border:0;background:transparent;box-shadow:none;";
+        const trigger = wrap.querySelector(".us-header-language-trigger");
+        if (trigger) trigger.style.cssText = "width:auto;min-width:76px;max-width:92px;height:36px;min-height:36px;max-height:36px;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:0 4px;margin:0;border:0;border-radius:9px;background:transparent;box-shadow:none;color:var(--text-color,#111827);font-size:15px;font-weight:760;line-height:1;letter-spacing:0;cursor:pointer;";
+        const mark = wrap.querySelector(".us-language-mark");
+        if (mark) mark.style.cssText = "width:31px;min-width:31px;height:31px;min-height:31px;border-radius:999px;";
+        const short = wrap.querySelector(".us-language-short");
+        if (short) short.style.cssText = "min-width:21px;display:inline-block;text-align:center;line-height:1;";
+        const chevron = wrap.querySelector(".us-language-chevron");
+        if (chevron) chevron.style.cssText = "width:12px;min-width:12px;margin:0;line-height:1;font-size:15px;transform:translateY(-1px);";
+    }
+
     function currentLanguage() {
         const boot = frappe.boot || {};
         const user = boot.user || {};
@@ -41,11 +81,13 @@
 
     function mountTarget() {
         const nav = navbar();
-        return (
+        const target = (
             (nav && (nav.querySelector(".navbar-right") || nav.querySelector(".navbar-nav.navbar-right") || nav.querySelector(".navbar-collapse"))) ||
             nav ||
             document.querySelector(".page-head .page-actions")
         );
+        if (target) target.classList.add("us-productivity-navbar-target");
+        return target;
     }
 
     function compactElement(node) {
@@ -87,8 +129,10 @@
         );
     }
 
-    function isRowReverse(target) {
-        return window.getComputedStyle && window.getComputedStyle(target).flexDirection === "row-reverse";
+    function insertAfter(reference, node) {
+        if (!reference || !reference.parentElement) return false;
+        if (reference.nextElementSibling !== node) reference.insertAdjacentElement("afterend", node);
+        return true;
     }
 
     function insertInHeader(wrap) {
@@ -97,19 +141,17 @@
         const user = target.querySelector(".avatar, .avatar-frame, .navbar-user, .dropdown-avatar");
         const userWrap = user && (user.closest("li,.dropdown,.nav-item,.navbar-item") || user.parentElement);
         if (userWrap && userWrap.parentElement === target) {
-            if (isRowReverse(target)) {
-                if (userWrap.nextElementSibling !== wrap) userWrap.insertAdjacentElement("afterend", wrap);
-            } else if (wrap.nextElementSibling !== userWrap) {
-                target.insertBefore(wrap, userWrap);
-            }
+            userWrap.classList.add("us-header-account-slot");
+            insertAfter(userWrap, wrap);
         } else if (wrap.parentElement !== target) {
             target.appendChild(wrap);
         }
     }
 
     function build(settings) {
+        ensureNavbarPolishStyle();
         hideLegacyLanguageControls();
-        document.querySelectorAll(".us-header-productivity-tools, .us-navbar-tools").forEach((node) => node.remove());
+        document.querySelectorAll(".us-header-productivity-tools").forEach((node) => node.remove());
         document.querySelectorAll(".us-language-switcher").forEach((node, index) => { if (index > 0) node.remove(); });
         let wrap = document.querySelector(".us-language-switcher");
         if (wrap && !wrap.querySelector(".us-header-language-trigger")) {
@@ -173,7 +215,11 @@
         }).join("");
 
         insertInHeader(wrap);
+        applyInlinePolish(wrap);
         hideLegacyLanguageControls();
+        if (NS.navbar_tools && typeof NS.navbar_tools.init === "function") {
+            setTimeout(() => NS.navbar_tools.init(NS.settings || {}), 0);
+        }
     }
 
     function observe(settings) {
