@@ -1,7 +1,8 @@
 import frappe
 
-ASSET_VERSION = "20260419_1"
+ASSET_VERSION = "20260819_1"
 JS_PATH = f"/assets/universal_standard/js/universal_standard_v2.js?v={ASSET_VERSION}"
+THEME_JS_PATH = f"/assets/universal_standard/js/us_theme_enhancer.js?v={ASSET_VERSION}"
 CSS_PATH = f"/assets/universal_standard/css/universal_standard_v2.css?v={ASSET_VERSION}"
 TOGGLE_PATH = "/api/method/universal_standard.api.toggle_language_and_redirect?next=/app"
 
@@ -28,8 +29,14 @@ def after_request(response):
 		if CSS_PATH not in html and "</head>" in html:
 			html = html.replace("</head>", f'<link rel="stylesheet" href="{CSS_PATH}"></head>')
 
-		if JS_PATH not in html and "</body>" in html:
-			html = html.replace("</body>", f'<script src="{JS_PATH}"></script></body>')
+		if "</body>" in html:
+			script_tags = []
+			if JS_PATH not in html:
+				script_tags.append(f'<script src="{JS_PATH}"></script>')
+			if THEME_JS_PATH not in html:
+				script_tags.append(f'<script src="{THEME_JS_PATH}"></script>')
+			if script_tags:
+				html = html.replace("</body>", "".join(script_tags) + "</body>")
 
 		if "us-language-switch" not in html and "</body>" in html:
 			language = (getattr(frappe.local, "lang", None) or "ar").lower()

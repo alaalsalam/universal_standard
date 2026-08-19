@@ -12,12 +12,11 @@ def _v(path: str) -> str:
 	return f"{path}?v={ASSET_VERSION}"
 
 
-# No frontend CSS or JavaScript is injected. Frappe v16 owns the complete Desk
-# layout, navbar, workspace, sidebar, cards, spacing, and typography.
+# Frontend CSS/JS for universal Standard features are injected by the after_request
+# hook (universal_standard.injector.after_request) so we keep app_include empty.
 app_include_css = []
 
-# No global Desk JavaScript injection. This keeps the official Frappe v16
-# navbar, workspace, sidebar, and interaction behavior untouched.
+# No global Desk JavaScript injection through Frappe app_include_js.
 app_include_js = []
 
 doctype_js = {}
@@ -25,6 +24,8 @@ doctype_js = {}
 web_include_css = []
 
 app_include_icons = []
+
+after_request = "universal_standard.injector.after_request"
 
 after_install = "universal_standard.setup.after_install"
 after_migrate = "universal_standard.setup.after_migrate"

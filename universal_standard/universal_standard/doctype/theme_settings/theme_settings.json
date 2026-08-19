@@ -1,0 +1,339 @@
+{
+	"actions": [],
+	"creation": "2026-08-19 00:00:00",
+	"doctype": "DocType",
+	"engine": "InnoDB",
+	"field_order": [
+		"tab_sidebar",
+		"section_sidebar_background",
+		"left_sidebar_bg",
+		"left_sidebar_app_title",
+		"left_sidebar_app_subtitle",
+		"column_break_sb1",
+		"left_sidebar_main_icon_bg",
+		"left_sidebar_app_logo",
+		"section_sidebar_text",
+		"left_sidebar_text_color",
+		"left_sidebar_subtext_color",
+		"left_sidebar_sub_icons_color",
+		"section_sidebar_active",
+		"sidebar_active_gradient_start",
+		"column_break_sb2",
+		"sidebar_active_gradient_end",
+		"section_sidebar_layout",
+		"hide_left_sidebar",
+		"hide_right_sidebar",
+		"hide_form_footer",
+		"hide_search_bar",
+		"section_navbar_buttons",
+		"navbar_show_print",
+		"column_break_nav1",
+		"navbar_show_assign",
+		"column_break_nav2",
+		"navbar_show_attachments",
+		"column_break_nav3",
+		"navbar_show_share",
+		"tab_general",
+		"section_brand_colors",
+		"theme_primary",
+		"theme_secondary",
+		"column_break_gen1",
+		"theme_primary_hover",
+		"theme_secondary_hover",
+		"section_text_colors",
+		"text_primary",
+		"text_inverse",
+		"column_break_text1",
+		"text_muted",
+		"section_header",
+		"section_break_surfaces",
+		"bg_canvas",
+		"bg_surface",
+		"column_break_surf1",
+		"bg_muted",
+		"border_default",
+		"section_typography",
+		"font_size"
+	],
+	"fields": [
+		{
+			"fieldname": "tab_sidebar",
+			"fieldtype": "Tab Break",
+			"label": "Sidebar"
+		},
+		{
+			"fieldname": "section_sidebar_background",
+			"fieldtype": "Section Break",
+			"label": "Background"
+		},
+		{
+			"fieldname": "left_sidebar_bg",
+			"fieldtype": "Color",
+			"label": "Left Sidebar BG"
+		},
+		{
+			"fieldname": "column_break_sb1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "left_sidebar_main_icon_bg",
+			"fieldtype": "Color",
+			"label": "Left Sidebar Main Icon BG"
+		},
+		{
+			"fieldname": "left_sidebar_app_logo",
+			"fieldtype": "Attach",
+			"label": "Left Sidebar App Logo"
+		},
+		{
+			"fieldname": "left_sidebar_app_title",
+			"fieldtype": "Data",
+			"label": "Left Sidebar App Title"
+		},
+		{
+			"fieldname": "left_sidebar_app_subtitle",
+			"fieldtype": "Data",
+			"label": "Left Sidebar App Subtitle"
+		},
+		{
+			"fieldname": "section_sidebar_text",
+			"fieldtype": "Section Break",
+			"label": "Text & Icons"
+		},
+		{
+			"fieldname": "left_sidebar_text_color",
+			"fieldtype": "Color",
+			"label": "Left Sidebar Text Color"
+		},
+		{
+			"fieldname": "left_sidebar_subtext_color",
+			"fieldtype": "Color",
+			"label": "Left Sidebar Subtext Color"
+		},
+		{
+			"fieldname": "left_sidebar_sub_icons_color",
+			"fieldtype": "Color",
+			"label": "Left Sidebar Sub Icons Color"
+		},
+		{
+			"fieldname": "section_sidebar_active",
+			"fieldtype": "Section Break",
+			"label": "Active Item"
+		},
+		{
+			"fieldname": "sidebar_active_gradient_start",
+			"fieldtype": "Color",
+			"label": "Gradient Start"
+		},
+		{
+			"fieldname": "column_break_sb2",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "sidebar_active_gradient_end",
+			"fieldtype": "Color",
+			"label": "Gradient End"
+		},
+		{
+			"fieldname": "section_sidebar_layout",
+			"fieldtype": "Section Break",
+			"label": "Layout"
+		},
+		{
+			"default": "0",
+			"fieldname": "hide_left_sidebar",
+			"fieldtype": "Check",
+			"label": "Hide Left Sidebar"
+		},
+		{
+			"default": "0",
+			"fieldname": "hide_right_sidebar",
+			"fieldtype": "Check",
+			"label": "Hide Right Sidebar"
+		},
+		{
+			"default": "0",
+			"fieldname": "hide_form_footer",
+			"fieldtype": "Check",
+			"label": "Hide Form Footer"
+		},
+		{
+			"depends_on": "eval:doc.hide_right_sidebar == 1",
+			"fieldname": "section_navbar_buttons",
+			"fieldtype": "Section Break",
+			"label": "Show in Navbar (when sidebar is hidden)"
+		},
+		{
+			"fieldname": "navbar_show_print",
+			"fieldtype": "Check",
+			"label": "Print",
+			"default": "1"
+		},
+		{
+			"fieldname": "column_break_nav1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "navbar_show_assign",
+			"fieldtype": "Check",
+			"label": "Assign To",
+			"default": "1"
+		},
+		{
+			"fieldname": "column_break_nav2",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "navbar_show_attachments",
+			"fieldtype": "Check",
+			"label": "Attachments",
+			"default": "1"
+		},
+		{
+			"fieldname": "column_break_nav3",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "navbar_show_share",
+			"fieldtype": "Check",
+			"label": "Share",
+			"default": "1"
+		},
+		{
+			"fieldname": "tab_general",
+			"fieldtype": "Tab Break",
+			"label": "Brand & Surfaces"
+		},
+		{
+			"fieldname": "section_brand_colors",
+			"fieldtype": "Section Break",
+			"label": "Brand Colors"
+		},
+		{
+			"fieldname": "theme_primary",
+			"fieldtype": "Color",
+			"label": "Primary"
+		},
+		{
+			"fieldname": "theme_secondary",
+			"fieldtype": "Color",
+			"label": "Secondary"
+		},
+		{
+			"fieldname": "column_break_gen1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "theme_primary_hover",
+			"fieldtype": "Color",
+			"label": "Primary Hover"
+		},
+		{
+			"fieldname": "theme_secondary_hover",
+			"fieldtype": "Color",
+			"label": "Secondary Hover"
+		},
+		{
+			"fieldname": "section_text_colors",
+			"fieldtype": "Section Break",
+			"label": "Text Colors"
+		},
+		{
+			"fieldname": "text_primary",
+			"fieldtype": "Color",
+			"label": "Primary Text"
+		},
+		{
+			"fieldname": "text_inverse",
+			"fieldtype": "Color",
+			"label": "Inverse Text"
+		},
+		{
+			"fieldname": "column_break_text1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "text_muted",
+			"fieldtype": "Color",
+			"label": "Muted Text"
+		},
+		{
+			"fieldname": "section_header",
+			"fieldtype": "Color",
+			"label": "Section Header Accent"
+		},
+		{
+			"fieldname": "section_break_surfaces",
+			"fieldtype": "Section Break",
+			"label": "Surfaces & Borders"
+		},
+		{
+			"fieldname": "bg_canvas",
+			"fieldtype": "Color",
+			"label": "Canvas Background"
+		},
+		{
+			"fieldname": "bg_surface",
+			"fieldtype": "Color",
+			"label": "Surface Background"
+		},
+		{
+			"fieldname": "column_break_surf1",
+			"fieldtype": "Column Break"
+		},
+		{
+			"fieldname": "bg_muted",
+			"fieldtype": "Color",
+			"label": "Muted Background"
+		},
+		{
+			"fieldname": "border_default",
+			"fieldtype": "Color",
+			"label": "Default Border"
+		},
+		{
+			"fieldname": "section_typography",
+			"fieldtype": "Section Break",
+			"label": "Typography"
+		},
+		{
+			"default": "Medium",
+			"fieldname": "font_size",
+			"fieldtype": "Select",
+			"label": "Font Size",
+			"options": "Small\nMedium\nLarge"
+		},
+		{
+			"fieldname": "hide_search_bar",
+			"fieldtype": "Check",
+			"label": "Hide Search Bar",
+			"default": "0"
+		}
+	],
+	"issingle": 1,
+	"links": [],
+	"modified": "2026-08-19 00:00:00",
+	"modified_by": "Administrator",
+	"module": "Universal Standard",
+	"name": "Theme Settings",
+	"owner": "Administrator",
+	"permissions": [
+		{
+			"create": 1,
+			"read": 1,
+			"role": "System Manager",
+			"write": 1
+		},
+		{
+			"create": 0,
+			"email": 1,
+			"print": 1,
+			"read": 1,
+			"role": "All"
+		}
+	],
+	"sort_field": "modified",
+	"sort_order": "DESC",
+	"states": [],
+	"track_changes": 1
+}
