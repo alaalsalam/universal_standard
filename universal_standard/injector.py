@@ -1,9 +1,10 @@
 import frappe
 
-ASSET_VERSION = "20260819_1"
+ASSET_VERSION = "20260819_2"
 JS_PATH = f"/assets/universal_standard/js/universal_standard_v2.js?v={ASSET_VERSION}"
 THEME_JS_PATH = f"/assets/universal_standard/js/us_theme_enhancer.js?v={ASSET_VERSION}"
 CSS_PATH = f"/assets/universal_standard/css/universal_standard_v2.css?v={ASSET_VERSION}"
+LEANY_CSS_PATH = f"/assets/universal_standard/css/leany_integration.css?v={ASSET_VERSION}"
 TOGGLE_PATH = "/api/method/universal_standard.api.toggle_language_and_redirect?next=/app"
 
 
@@ -28,6 +29,8 @@ def after_request(response):
 
 		if CSS_PATH not in html and "</head>" in html:
 			html = html.replace("</head>", f'<link rel="stylesheet" href="{CSS_PATH}"></head>')
+		if LEANY_CSS_PATH not in html and "</head>" in html:
+			html = html.replace("</head>", f'<link rel="stylesheet" href="{LEANY_CSS_PATH}"></head>')
 
 		if "</body>" in html:
 			script_tags = []
