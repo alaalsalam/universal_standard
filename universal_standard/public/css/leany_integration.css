@@ -2410,3 +2410,71 @@ textarea,
 .awesomplete > ul > li {
   font-family: var(--font-family-sans-serif) !important;
 }
+
+/*
+ * Leany complete dark-mode palette.
+ * Kept after the compatibility bridge so Leany's native dark tokens win only
+ * when Frappe switches the Desk to dark mode.
+ */
+[data-theme="dark"] {
+  --bg-color: #0f1117;
+  --fg-color: #181b23;
+  --control-bg: #232834;
+  --control-bg-on-gray: #1e222c;
+  --disabled-control-bg: #181b23;
+  --leany-bg-sidebar: #181b23;
+  --leany-bg-elevated: #1e222c;
+  --leany-bg-hover: rgba(255, 255, 255, 0.05);
+  --sidebar-hover-color: rgba(255, 255, 255, 0.05);
+  --sidebar-active-color: rgba(255, 255, 255, 0.08);
+  --sidebar-border-color: #2a2f3a;
+  --divider-color: #22262f;
+  --surface-menu-bar: #181b23;
+  --border-color: #2a2f3a;
+  --leany-border-subtle: #22262f;
+  --leany-border-strong: #2a2f3a;
+  --dark-border-color: #2a2f3a;
+  --text-color: #e1e4ea;
+  --heading-color: #e1e4ea;
+  --text-muted: #8b919e;
+  --text-light: #5c6270;
+  --leany-text-primary: #e1e4ea;
+  --leany-text-secondary: #8b919e;
+  --leany-text-muted: #5c6270;
+  --leany-accent: #e1e4ea;
+  --leany-accent-hover: #ffffff;
+  --btn-primary: #e1e4ea;
+  --btn-primary-dark: #ffffff;
+  --btn-primary-text: #0f1117;
+  --leany-focus-ring: #e1e4ea;
+  --focus-default: 0 0 0 2px rgba(225, 228, 234, 0.25);
+  --focus-blue: 0 0 0 2px rgba(225, 228, 234, 0.25);
+  --card-bg: #1e222c;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1px #22262f;
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1px #22262f;
+  --shadow-base: 0 1px 3px rgba(0, 0, 0, 0.4), 0 0 0 1px #22262f;
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.4), 0 0 0 1px #22262f;
+  --shadow-lg: 0 16px 70px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px #22262f;
+  --shadow-xl: 0 8px 30px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.5), 0 0 0 1px #22262f;
+  --shadow-2xl: 0 16px 70px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 0 1px #22262f;
+  --highlight-color: rgba(255, 255, 255, 0.03);
+  --subtle-fg: #181b23;
+  --list-header-text-color: #5c6270;
+  --list-row-border-color: #22262f;
+  --list-row-name-color: #e1e4ea;
+  --list-row-text-color: #8b919e;
+  --list-meta-color: #5c6270;
+  --list-row-hover-bg: rgba(255, 255, 255, 0.03);
+  --list-row-selected-bg: rgba(255, 255, 255, 0.05);
+  --leany-destructive: #ff6b6b;
+  --invert-neutral: #6ea8fe;
+  --alert-bg-info: rgba(110, 168, 254, 0.12);
+  --alert-text-info: #6ea8fe;
+  --alert-bg-success: rgba(68, 255, 170, 0.12);
+  --alert-text-success: #4fa;
+  --alert-bg-warning: rgba(255, 193, 7, 0.12);
+  --alert-text-warning: #ffc107;
+  --alert-bg-danger: rgba(255, 107, 107, 0.12);
+  --alert-text-danger: #ff6b6b;
+}

@@ -1,4 +1,7 @@
 (function () {
+	function isAppearanceIntegrated() {
+		return Boolean(document.querySelector('link[data-us-appearance="css"]'));
+	}
 
 	let _settings = null;        // null = not yet loaded
 	let _loading = false;
@@ -48,6 +51,10 @@
 	const STYLE_ICONS = "us-theme-icons";
 
 	function injectSidebarCSS() {
+		if (isAppearanceIntegrated()) {
+			document.getElementById(STYLE_SIDEBAR)?.remove();
+			return;
+		}
 		const bg = themeColor("left_sidebar_bg", "#1D2B48");
 		const iconBg = themeColor("left_sidebar_main_icon_bg", "#334155");
 		const text = themeColor("left_sidebar_text_color", "#E2E8F0");
@@ -118,6 +125,10 @@
 	}
 
 	function injectIconCSS() {
+		if (isAppearanceIntegrated()) {
+			document.getElementById(STYLE_ICONS)?.remove();
+			return;
+		}
 		const color = themeColor("left_sidebar_sub_icons_color", themeColor("theme_primary", "#22C1C3"));
 
 		let el = document.getElementById(STYLE_ICONS);
@@ -142,6 +153,10 @@
 	const STYLE_FONT = "us-theme-font-size";
 
 	function injectFontSizeCSS() {
+		if (isAppearanceIntegrated()) {
+			document.getElementById(STYLE_FONT)?.remove();
+			return;
+		}
 		const size = getSettings().font_size;
 		const px = FONT_SIZE_MAP[size] || null;
 

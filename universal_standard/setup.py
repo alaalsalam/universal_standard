@@ -46,6 +46,12 @@ def after_install():
 def after_migrate():
 	ensure_saudi_riyal_currency_symbol()
 	try:
+		from universal_standard.appearance_api import migrate_legacy_preferences
+
+		migrate_legacy_preferences()
+	except Exception:
+		frappe.log_error(frappe.get_traceback(), "Universal Standard appearance migration failed")
+	try:
 		from universal_standard.productivity.setup import after_migrate as productivity_after_migrate
 		productivity_after_migrate()
 	except Exception:

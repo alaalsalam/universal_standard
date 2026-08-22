@@ -3,9 +3,9 @@ app_title = "Universal Standard"
 app_publisher = "alaalsalam"
 app_description = "General shared UX improvements for all Frappe systems"
 app_email = "alaalsalam101@gmail.com"
-app_license = "mit"
+app_license = "GPL-3.0-or-later"
 
-ASSET_VERSION = "20260816_frappe_v16_ui"
+ASSET_VERSION = "20260822_appearance_transfer_v1"
 
 
 def _v(path: str) -> str:
@@ -26,6 +26,9 @@ web_include_css = []
 app_include_icons = []
 
 after_request = "universal_standard.injector.after_request"
+
+# The per-user appearance layer is part of Universal Standard.
+extend_bootinfo = ["universal_standard.appearance_api.boot_session"]
 
 after_install = "universal_standard.setup.after_install"
 after_migrate = "universal_standard.setup.after_migrate"

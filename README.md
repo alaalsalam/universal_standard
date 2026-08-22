@@ -31,4 +31,5 @@ bench build --app universal_standard
 
 ### License
 
-mit
+GPL-3.0-or-later. This application incorporates the Aurora appearance layer;
+see `THIRD_PARTY_NOTICES.md` for attribution and licence details.

@@ -99,3 +99,44 @@
         }
     }, 300);
 })();
+
+(function () {
+	function mountLanguageControl() {
+		var control = document.querySelector(".us-language-switch");
+		var target = document.querySelector(".navbar > .flex");
+		if (!control || !target) return false;
+
+		var slot = target.querySelector(":scope > .us-language-slot");
+		if (!slot) {
+			slot = document.createElement("div");
+			slot.className = "us-language-slot";
+			var avatar = target.querySelector(":scope > .desktop-avatar");
+			if (avatar) avatar.insertAdjacentElement("beforebegin", slot);
+			else target.appendChild(slot);
+		}
+
+		if (control.parentElement !== slot) slot.appendChild(control);
+		control.classList.remove("us-pending", "us-floating");
+		control.classList.add("us-in-navbar");
+		return true;
+	}
+
+	function scheduleMount() {
+		if (mountLanguageControl()) return;
+		var attempts = 0;
+		var timer = window.setInterval(function () {
+			attempts += 1;
+			if (mountLanguageControl() || attempts >= 20) window.clearInterval(timer);
+		}, 150);
+	}
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", scheduleMount, { once: true });
+	} else {
+		scheduleMount();
+	}
+
+	if (window.jQuery) {
+		window.jQuery(document).on("app_ready page-change toolbar_setup", scheduleMount);
+	}
+})();
