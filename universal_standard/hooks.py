@@ -3,45 +3,52 @@ app_title = "Universal Standard"
 app_publisher = "alaalsalam"
 app_description = "General shared UX improvements for all Frappe systems"
 app_email = "alaalsalam101@gmail.com"
-app_license = "mit"
+app_license = "GPL-3.0-or-later"
 
-ASSET_VERSION = "20260429_1"
+ASSET_VERSION = "20260822_appearance_transfer_v1"
 
 
 def _v(path: str) -> str:
 	return f"{path}?v={ASSET_VERSION}"
 
 
-app_include_css = [
-	_v("/assets/universal_standard/css/universal_standard_v2.css"),
-	_v("/assets/universal_standard/css/us_themes.bundle.css"),
-	_v("/assets/universal_standard/css/css-rtl/us_translations_ar_eg.css"),
-	_v("/assets/universal_standard/css/us_preview_attachment.bundle.css"),
-]
+# Frontend CSS/JS for universal Standard features are injected by the after_request
+# hook (universal_standard.injector.after_request) so we keep app_include empty.
+app_include_css = []
 
-app_include_js = [
-	_v("/assets/universal_standard/js/universal_standard_v2.js"),
-	_v("/assets/universal_standard/js/us_custom_sidebar.js"),
-	_v("/assets/universal_standard/js/us_themes.bundle.js"),
-	_v("/assets/universal_standard/js/us_preview_attachment.bundle.js"),
-	_v("/assets/universal_standard/js/us_preview_attachment_patch.js"),
-]
+# No global Desk JavaScript injection through Frappe app_include_js.
+app_include_js = []
 
-web_include_css = [
-	_v("/assets/universal_standard/css/universal_standard_v2.css"),
-	_v("/assets/universal_standard/css/css-rtl/us_translations_ar_eg.css"),
-]
+doctype_js = {}
 
-app_include_icons = [
-	"universal_standard/icons/my_custom_icons.svg",
-]
+web_include_css = []
 
-after_install = "universal_standard.pdf.install.after_install"
+app_include_icons = []
+
+after_request = "universal_standard.injector.after_request"
+
+# The per-user appearance layer is part of Universal Standard.
+extend_bootinfo = ["universal_standard.appearance_api.boot_session"]
+
+after_install = "universal_standard.setup.after_install"
+after_migrate = "universal_standard.setup.after_migrate"
 before_uninstall = "universal_standard.pdf.install.before_uninstall"
 
-override_whitelisted_methods = {
-	"frappe.core.doctype.user.user.switch_theme": "universal_standard.api.switch_theme"
+doc_events = {
+	"File": {
+		"before_insert": "universal_standard.productivity.attachments.apply_private_attachment_policy",
+		"validate": "universal_standard.productivity.attachments.apply_private_attachment_policy",
+	},
+	"User": {
+		"before_insert": "universal_standard.productivity.signup.validate_signup",
+	},
+	"*": {
+		"validate": "universal_standard.productivity.item_translation.apply_item_translation",
+		"on_submit": "universal_standard.productivity.pdf_on_submit.handle_on_submit",
+	},
 }
+
+override_whitelisted_methods = {}
 
 fixtures = [
 	{

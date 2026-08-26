@@ -11,6 +11,8 @@
 	src: url("/assets/universal_standard/fonts/Cairo-Regular-Saudi.ttf") format("truetype"),
 		url("https://cdn.jsdelivr.net/gh/UsmanSanawar/Cairo-with-Saudi-Currency@main/Cairo-Regular-Saudi.ttf") format("truetype");
 	unicode-range: U+00A7;
+	font-style: normal;
+	font-weight: 400;
 	font-display: swap;
 }
 
@@ -29,22 +31,106 @@
 .number-widget-box .number,
 .query-report,
 .report-wrapper,
+.report-view,
+.report-container,
+.report-table,
+.report-summary,
+.report-summary *,
 .datatable,
+.datatable *,
+.dt-scrollable,
+.dt-scrollable *,
+.dt-row,
+.dt-row *,
 .dt-cell,
 .dt-cell__content,
+.dt-cell__content *,
+.dt-cell__content--col,
+.dt-cell__edit,
+.dt-cell__resize-handle,
+.dt-instance,
+.dt-instance *,
+.dt-header,
+.dt-header *,
+.dt-body,
+.dt-body *,
+.dt-row-header,
+.dt-row-header *,
+.list-row,
+.list-row *,
+.list-row-container,
+.list-row-container *,
+.frappe-list,
+.frappe-list *,
+.result,
+.result *,
+.form-grid,
+.form-grid *,
+.grid-row,
+.grid-row *,
+.grid-body,
+.grid-body *,
+.grid-static-col,
+.grid-static-col *,
 .grid-static-col[data-fieldtype="Currency"] {
 	font-family: "US Saudi Riyal", "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif !important;
 }
 
 :root,
 [data-theme="light"] {
-	--font-stack: "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
-	--font-family-sans-serif: "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
+	--font-stack: "US Saudi Riyal", "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
+	--font-family-sans-serif: "US Saudi Riyal", "Almarai", "Noto Sans Arabic", "Segoe UI", sans-serif;
 	--us-accent: #15803d;
 	--us-accent-soft: #dcfce7;
 	--us-border-soft: #d9f3df;
 	--us-surface-tint: #f6fcf7;
 	--us-glow: rgba(21, 128, 61, 0.18);
+}
+
+html,
+body,
+.app,
+.desk,
+.page-container,
+.page-content,
+.layout-main,
+.layout-main-section,
+.layout-side-section,
+.modal,
+.modal *,
+.popover,
+.popover *,
+.dropdown-menu,
+.dropdown-menu *,
+.standard-sidebar,
+.standard-sidebar *,
+.workspace-page,
+.workspace-page *,
+.form-layout,
+.form-layout *,
+.form-section,
+.form-section *,
+.form-dashboard,
+.form-dashboard *,
+.frappe-control,
+.frappe-control *,
+.control-input,
+.control-input *,
+.control-value,
+.control-value *,
+.comment-box,
+.comment-box *,
+.timeline,
+.timeline *,
+.list-paging-area,
+.list-paging-area *,
+.page-form,
+.page-form *,
+.print-preview,
+.print-preview *,
+.web-form,
+.web-form * {
+	font-family: var(--font-family-sans-serif) !important;
 }
 
 body,
@@ -76,48 +162,61 @@ textarea,
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	gap: 6px;
 	text-decoration: none !important;
-	font-weight: 700;
+	font-weight: 600;
 	letter-spacing: 0.2px;
 	user-select: none;
 }
 
+.us-language-switch.us-pending {
+	display: none;
+}
+
+.navbar > .flex > .us-language-slot {
+	height: 40px;
+	margin-inline: 2px;
+}
+
 .us-language-switch.us-in-navbar {
-	width: 32px;
-	height: 32px;
-	border-radius: 999px;
-	background: var(--us-accent);
-	color: #fff !important;
+	min-width: 54px;
+	height: 36px;
+	padding: 0 10px;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md, 10px);
+	background: var(--control-bg);
+	color: var(--text-color) !important;
 	font-size: 12px;
-	box-shadow: 0 4px 10px var(--us-glow);
+	box-shadow: none;
+	transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .us-language-switch.us-in-navbar:hover {
-	background: #166534;
-	transform: translateY(-1px);
+	background: var(--fg-hover-color);
+	border-color: var(--dark-border-color);
+	color: var(--primary) !important;
 }
 
-.us-language-switch.us-floating {
-	position: fixed;
-	top: 86px;
-	right: 14px;
-	z-index: 9999;
-	width: 40px;
-	height: 40px;
-	border-radius: 999px;
-	background: var(--us-accent);
-	color: #fff !important;
-	font-size: 13px;
-	box-shadow: 0 8px 20px rgba(21, 128, 61, 0.28);
+.us-language-switch.us-in-navbar svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.7;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
 
-.us-language-switch.us-floating:hover {
-	background: #166534;
-}
+@media (max-width: 600px) {
+	.us-language-switch.us-in-navbar {
+		min-width: 36px;
+		width: 36px;
+		padding: 0;
+	}
 
-[dir="rtl"] .us-language-switch.us-floating {
-	left: 14px;
-	right: auto;
+	.us-language-switch.us-in-navbar span {
+		display: none;
+	}
 }
 
 /* Creative but lightweight green highlight */

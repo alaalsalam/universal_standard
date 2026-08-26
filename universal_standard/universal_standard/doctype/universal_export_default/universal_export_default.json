@@ -1,0 +1,52 @@
+{
+ "doctype": "DocType",
+ "name": "Universal Export Default",
+ "module": "Universal Standard",
+ "custom": 0,
+ "is_submittable": 0,
+ "issingle": 0,
+ "istable": 1,
+ "editable_grid": 1,
+ "track_changes": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "fields": [
+  {
+   "fieldname": "document_type",
+   "label": "Document Type",
+   "fieldtype": "Link",
+   "options": "DocType",
+   "in_list_view": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "export_all_fields",
+   "label": "Export All Fields",
+   "fieldtype": "Check",
+   "default": 0
+  },
+  {
+   "fieldname": "export_visible_fields",
+   "label": "Export Visible Fields",
+   "fieldtype": "Check",
+   "default": 1
+  },
+  {
+   "fieldname": "include_child_tables",
+   "label": "Include Child Tables",
+   "fieldtype": "Check",
+   "default": 0
+  },
+  {
+   "fieldname": "default_file_type",
+   "label": "Default File Type",
+   "fieldtype": "Select",
+   "options": "CSV\nExcel",
+   "default": "CSV"
+  }
+ ],
+ "permissions": [],
+ "actions": [],
+ "links": [],
+ "states": []
+}
